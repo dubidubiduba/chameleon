@@ -11,7 +11,7 @@ slime::slime(QWidget* parent)   //这里接受一个父指针，主要用于和c
 void slime::initBody()
 {
     body = new QLabel(m_parent);
-    Imageset(body,QPixmap(QString(":/slime-image/body1.png")));
+    Imageset(body,QPixmap(QString(":/src/images/slime-images/body/body1.png")));
 }
 
 void slime::Imageset(QLabel* image,QPixmap pixmap)  //用来给label设置图片,主要用于整个pet的加载

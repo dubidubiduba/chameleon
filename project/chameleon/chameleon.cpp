@@ -51,10 +51,10 @@ void chameleon::initButton()  //初始化按钮
     btn_setting = new QPushButton(this);
     btn_test = new QPushButton("test",this);
     //加载按钮图标
-    btn_exit->setIcon(QIcon(":/images/icon/close.png"));
-    btn_dress->setIcon(QIcon(":/images/icon/dress.png"));
-    btn_more->setIcon(QIcon(":/images/icon/more.png"));
-    btn_setting->setIcon(QIcon(":/images/icon/setting.png"));
+    btn_exit->setIcon(QIcon(":/src/images/icon/close.png"));
+    btn_dress->setIcon(QIcon(":/src/images/icon/dress.png"));
+    btn_more->setIcon(QIcon(":/src/images/icon/more.png"));
+    btn_setting->setIcon(QIcon(":/src/images/icon/setting.png"));
     //设置按钮的大小
     int btn_size = this->frameGeometry().width()/8;
     btn_exit->setFixedSize(btn_size,btn_size);
