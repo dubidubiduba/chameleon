@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/appearance/body/blue_body.png</file>
+        <file>images/icon/last.png</file>
+        <file>images/icon/add.png</file>
+        <file>images/icon/calendar.png</file>
+        <file>images/icon/choose.png</file>
+        <file>images/icon/close.png</file>
+        <file>images/icon/dress.png</file>
+        <file>images/icon/game.png</file>
+        <file>images/icon/haro_icon.ico</file>
+        <file>images/icon/min.png</file>
+        <file>images/icon/more.png</file>
+        <file>images/icon/music.png</file>
+        <file>images/icon/next.png</file>
+        <file>images/icon/pause.png</file>
+        <file>images/icon/play.png</file>
+        <file>images/icon/setting.png</file>
+        <file>images/icon/weather.png</file>
+        <file>slime-image/body1.png</file>
+    </qresource>
+</RCC>
