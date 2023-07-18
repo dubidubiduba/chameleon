@@ -14,7 +14,7 @@
 #include "characters/haro.h"
 #include "windows/more_win.h"
 #include "windows/dress_win.h"
-#include "characters/slime.h"
+#include "characters/rinai.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class chameleon; }
 QT_END_NAMESPACE
@@ -48,8 +48,8 @@ private:
     int ScreenWidth;  //显示器屏幕的宽度
     int ScreenHeight;   //显示器屏幕的高度
 //character部分
-    slime* S;
-    haro* H;
+    haro* _haro;
+    riNai* _rinai;
 //窗口部分
     more_win *More;
     dress_win *Dress;

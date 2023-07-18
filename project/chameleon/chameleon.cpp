@@ -13,14 +13,15 @@ chameleon::chameleon(QWidget *parent)
     initWindow();
     More = new more_win;
     Dress =  new dress_win;
-    S = new slime(this);
+    _rinai = new riNai(this);  //初始角色
     initButton();
-    initLayout();
+    initLayout(); //切换了初始角色记得还要修改这个函数
 }
+//不是继承自widget的对象记得在这里释放
 chameleon::~chameleon()
 {
     delete ui;
-    delete S;
+    delete _rinai;
 }
 /*--------------------------------------初始化部分--------------------------------------------*/
 void chameleon::initWindow()//初始化主窗口
@@ -87,7 +88,7 @@ void chameleon::initButton()  //初始化按钮
 void chameleon::initLayout()//初始化布局管理器
 {
     body_part = new QHBoxLayout;
-    body_part->addWidget(S->body);
+    body_part->addWidget(_rinai->body);
 
     this->setLayout(body_part);
 }
