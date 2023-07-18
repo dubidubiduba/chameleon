@@ -12,7 +12,7 @@ haro::~haro()
 void haro::initBody()
 {
     body = new QLabel(m_parent);
-    Imageset(body,QPixmap(QString(":/images/appearance/body/blue_body.png")));
+    Imageset(body,QPixmap(QString(":/src/images/haro-images/appearance/body/blue_body.png")));
 }
 void haro::Imageset(QLabel* image,QPixmap pixmap)  //用来给label设置图片,主要用于整个pet的加载
 {
