@@ -7,7 +7,7 @@ chameleon::chameleon(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
+    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
 
     //初始化操作
     initWindow();
@@ -135,7 +135,25 @@ void chameleon::testClicked()  //提供了一个共用的测试按钮，可以�
 
 /*------------------------------------------事件部分------------------------------------------*/
 //这里需要一个鼠标左键能拖动窗口移动的功能，事件这一块puck还是小白 所以就没写函数头了
+void chameleon::mousePressEvent(QMouseEvent *event)//鼠标按压时触发该事件，仅触发一次
+{
+    startPos = event->pos();//pos函数返回鼠标相对于当前窗口的位置
+    isMousePressed = true;
+}
 
+void chameleon::mouseMoveEvent(QMouseEvent *event)//在鼠标移动时会被多次调用
+{
+    if (isMousePressed) {
+        QPoint endPos = event->pos();           //鼠标瞬时移动某时刻相对于窗口位置
+        QPoint dist = endPos - startPos;        //以鼠标较起始位置的偏移量计算窗口落点的偏移量
+        move(x() + dist.x(), y() + dist.y());   //x()和y()是记录窗口相对于父窗口的位置，默认为0，因此此处move()效果为直接将窗口位移到落点处
+    }
+}
+
+void chameleon::mouseReleaseEvent(QMouseEvent *event)//此处必须要带参数，否则会因为虚函数的继承问题报错
+{
+    isMousePressed = false;
+}
 
 
 
