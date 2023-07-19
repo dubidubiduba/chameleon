@@ -1,6 +1,6 @@
 puck能力有限，架构成这样已经尽力了
 
-#######提交代码的时候删除.pro.user文件
+#######提交代码的时候删除.pro.user文件    //不必要了，添加了.ignore文件
 
 整个源码分为三个部分： characters、windows、和chameleon（主窗口）
 characters和windows都有对应的目录，里面是对应类的源码
