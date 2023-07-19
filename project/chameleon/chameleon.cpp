@@ -70,9 +70,9 @@ void chameleon::initButton()  //初始化按钮
     btn_setting->setIconSize(temp);
     //样式表
     setStyleSheet("QPushButton{border:4px solid black;"
-                  "background-color:rgb(200,210,255);border-radius: 10px;}"
-                  "QPushButton::hover{background-color:rgb(170,200,255);}"
-                  "QPushButton:pressed{background-color:rgb(60,70,200);}");
+                  "background-color:rgb(173, 216, 230);border-radius: 10px;}"
+                  "QPushButton::hover{background-color:rgb(180,255,255);}"
+                  "QPushButton:pressed{background-color:rgb(60,170,150);}");
 
     btn_setting->move(0,win_height-btn_size);
     btn_more->move(0,win_height-btn_size*2.2);

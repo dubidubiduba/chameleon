@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QFormLayout>
 #include <QPushButton>
+
 namespace Ui {
 class more_win;
 }
@@ -23,6 +24,8 @@ private:
     QPushButton* btn_weather;
     QPushButton* btn_calendar;
     QPushButton* btn_clock;
+
+
 };
 
 #endif // MORE_WIN_H

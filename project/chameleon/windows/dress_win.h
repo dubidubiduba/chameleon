@@ -3,6 +3,7 @@
 
 #include <QWidget>
 
+
 namespace Ui {
 class dress_win;
 }
@@ -14,6 +15,7 @@ class dress_win : public QWidget
 public:
     explicit dress_win(QWidget *parent = nullptr);
     ~dress_win();
+
 
 private:
     Ui::dress_win *ui;
