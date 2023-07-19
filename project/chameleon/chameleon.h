@@ -11,10 +11,12 @@
 #include <QDebug>
 #include <QButtonGroup>
 #include <QMouseEvent>
+#include <QFile>
 #include "characters/haro.h"
 #include "windows/more_win.h"
 #include "windows/dress_win.h"
 #include "characters/slime.h"
+#include"windows/setwin.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class chameleon; }
 QT_END_NAMESPACE
@@ -29,7 +31,6 @@ public:
     void initWindow(); 
     void initButton();
     void Imageset(QLabel* image,QPixmap pixmap);
-
     void initLayout();  //初始化布局管理器  这个主要用于加载角色，放在布局管理器中角色会随着窗口的伸缩变换
 
     //槽函数部分
@@ -53,7 +54,8 @@ private:
 //窗口部分
     more_win *More;
     dress_win *Dress;
-
+    setwin *Set;
+    int size;//体型大小
     QHBoxLayout* body_part; //用于加载charater的，在initLayout函数中用到
 
 //按钮部分

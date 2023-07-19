@@ -7,13 +7,27 @@ chameleon::chameleon(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
-
+    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
+    int coordX,coordY;//桌面坐标
+    QFile file("./file/file.dat");                                                    //文件的操作
+    file.open(QIODevice::ReadOnly);
+    QDataStream in(&file);
+    if(file.isOpen())//读取体型\相对桌面坐标
+        in>>size>>coordX>>coordY;
+    else{
+        size = 400;
+        coordX = x();
+        coordY = y();
+    }
+    file.close();
+    move(coordX,coordY);
     //初始化操作
     initWindow();
     More = new more_win;
     Dress =  new dress_win;
     S = new slime(this);
+    Set=new setwin;
+    Set->setSize(size);
     initButton();
     initLayout();
 }
@@ -22,6 +36,7 @@ chameleon::~chameleon()
     delete ui;
     delete S;
 }
+
 /*--------------------------------------初始化部分--------------------------------------------*/
 void chameleon::initWindow()//初始化主窗口
 {
@@ -41,7 +56,9 @@ void chameleon::initWindow()//初始化主窗口
     setAttribute(Qt::WA_TranslucentBackground);//设置背景透明
     Qt::WindowFlags m_flags = windowFlags();
     setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);
+
 }
+
 
 void chameleon::initButton()  //初始化按钮
 {
@@ -88,7 +105,6 @@ void chameleon::initLayout()//初始化布局管理器
 {
     body_part = new QHBoxLayout;
     body_part->addWidget(S->body);
-
     this->setLayout(body_part);
 }
 
@@ -122,9 +138,19 @@ void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜�
 }
 
 void chameleon::settingClicked()  //设置大小   设置的方式可以参考haro，也可以用其他方式，如果需要弹出窗口，请为这个窗口设置一个类，添加到windows目录中
-//注意，当窗口大小变化时，左侧按钮的位置也许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
+//注意，当窗口大小变化时，左侧按钮的位置许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
 {
+    if(Set->isHidden()){
+        //移动窗口坐标↓
+        Set->move(x()+frameGeometry().width()/2-230
+                            -Set->frameGeometry().width(),
+                        y()+frameGeometry().height()/2
+                            -Set->frameGeometry().height()/2);
 
+        Set->show();
+    }
+    else
+        Set->hide();
 
 }
 
