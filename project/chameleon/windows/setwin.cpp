@@ -1,26 +1,27 @@
 #include "setwin.h"
 #include "ui_setwin.h"
+#include "chameleon.h"
 
-setwin::setwin(QWidget *parent) :
+setwin::setwin(QWidget *parent,QWidget *p) :
     QWidget(parent),
     ui(new Ui::setwin)
 {
     ui->setupUi(this);
 
-    QBitmap bmp(this->size());//设置圆角边框
-    bmp.fill();
-    QPainter p(&bmp);
-    p.setPen(Qt::NoPen);
-    p.setBrush(Qt::black);
-    p.drawRoundedRect(bmp.rect(),50,50);
-    setMask(bmp);
-    setWindowOpacity(0.95);//设置透明度
-    setStyleSheet("background-color:white;");
+//    QBitmap bmp(this->size());//设置圆角边框
+//    bmp.fill();
+//    QPainter d(&bmp);
+//    d.setPen(Qt::NoPen);
+//    d.setBrush(Qt::black);
+//    d.drawRoundedRect(bmp.rect(),50,50);
+//    setMask(bmp);
+//    setWindowOpacity(0.95);//设置透明度
+//    setStyleSheet("background-color:white;");
 
-    Qt::WindowFlags m_flags = windowFlags();//保持窗口置顶1
-    setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);//保持窗口置顶2
+//    Qt::WindowFlags m_flags = windowFlags();//保持窗口置顶1
+//    setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);//保持窗口置顶2
 
-
+    m_parent=p;
 }
 
 setwin::~setwin()
@@ -54,8 +55,20 @@ int setwin::getSize()
 
 void setwin::on_sizeSlider_valueChanged(int value)
 {
+    int temp=haroSize;
     haroSize = value;
     sizeNum->setNum(haroSize);
+    m_parent->resize(haroSize,haroSize);
+    QRect windowGeometry=m_parent->geometry();
+    int windowX = windowGeometry.x(); // 获取窗口的横坐标
+    int windowY = windowGeometry.y(); // 获取窗口的纵坐标
+    if(haroSize>temp)
+    {
+        m_parent->move(windowX-value/160,windowY-value/160);
+//        m_parent->initButton(0,haroSize/50);
+    }
+    else
+    m_parent->move(windowX+value/160,windowY+value/160);
 }
 
 

@@ -17,7 +17,7 @@ class setwin : public QWidget
     Q_OBJECT
 
 public:
-    explicit setwin(QWidget *parent = nullptr);
+    explicit setwin(QWidget *parent=nullptr,QWidget *p=nullptr);
     ~setwin();
 
     void setSize(int);//设置size值
@@ -34,7 +34,7 @@ private:
     int haroSize;//haro大小参数
 
     QLabel *sizeNum;//显示size值标签
-
+    QWidget* m_parent;
     Ui::setwin *ui;
 };
 

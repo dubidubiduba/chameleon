@@ -15,7 +15,7 @@ chameleon::chameleon(QWidget *parent)
     if(file.isOpen())//读取体型\相对桌面坐标
         in>>size>>coordX>>coordY;
     else{
-        size = 400;
+        size = 500;
         coordX = x();
         coordY = y();
     }
@@ -23,12 +23,13 @@ chameleon::chameleon(QWidget *parent)
     move(coordX,coordY);
     //初始化操作
     initWindow();
+
     More = new more_win;
     Dress =  new dress_win;
     S = new slime(this);
-    Set=new setwin;
+    Set=new setwin(nullptr,this);
     Set->setSize(size);
-    initButton();
+    initButton(1,0);
     initLayout();
 }
 chameleon::~chameleon()
@@ -60,7 +61,7 @@ void chameleon::initWindow()//初始化主窗口
 }
 
 
-void chameleon::initButton()  //初始化按钮
+void chameleon::initButton(bool a,int b)  //初始化按钮
 {
     btn_exit = new QPushButton(this);
     btn_dress = new QPushButton(this);
@@ -89,17 +90,27 @@ void chameleon::initButton()  //初始化按钮
                   "background-color:rgb(200,210,255);border-radius: 10px;}"
                   "QPushButton::hover{background-color:rgb(170,200,255);}"
                   "QPushButton:pressed{background-color:rgb(60,70,200);}");
-
-    btn_setting->move(0,win_height-btn_size);
+    if (a)
+    { btn_setting->move(0,win_height-btn_size);
     btn_more->move(0,win_height-btn_size*2.2);
     btn_dress->move(0,win_height-btn_size*3.4);
     btn_exit->move(0,win_height-btn_size*4.6);
+    }
+    else
+    {
+    btn_setting->move(b,win_height-btn_size+b);
+    btn_more->move(b,win_height-btn_size*2.2+b);
+    btn_dress->move(b,win_height-btn_size*3.4+b);
+    btn_exit->move(b,win_height-btn_size*4.6+b);
+    }
+
     //槽函数绑定
     connect(btn_exit, &QPushButton::clicked, QApplication::instance(), &QApplication::quit);
     connect(btn_dress,&QPushButton::clicked,this,&chameleon::dressClicked);
     connect(btn_more,&QPushButton::clicked,this,&chameleon::moreClicked);
     connect(btn_setting,&QPushButton::clicked,this,&chameleon::settingClicked);
     connect(btn_test,&QPushButton::clicked,this,&chameleon::testClicked);
+
 }
 void chameleon::initLayout()//初始化布局管理器
 {
@@ -123,6 +134,7 @@ void chameleon::dressClicked()  //展示出可选的角色，这里可以使用�
     {
         Dress->hide();
     }
+
 }
 
 void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜单
