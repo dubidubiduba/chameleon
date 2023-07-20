@@ -10,7 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     characters/haro.cpp \
-    characters/slime.cpp \
+    characters/rinai.cpp \
     main.cpp \
     chameleon.cpp \
     windows/dress_win.cpp \
@@ -19,7 +19,7 @@ SOURCES += \
 HEADERS += \
     chameleon.h \
     characters/haro.h \
-    characters/slime.h \
+    characters/rinai.h \
     windows/dress_win.h \
     windows/more_win.h
 

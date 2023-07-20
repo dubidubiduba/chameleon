@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>src/images/slime-images/body/body1.png</file>
-    </qresource>
-</RCC>

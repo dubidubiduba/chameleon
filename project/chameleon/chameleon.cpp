@@ -7,20 +7,21 @@ chameleon::chameleon(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
+    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
 
     //初始化操作
     initWindow();
     More = new more_win;
     Dress =  new dress_win;
-    S = new slime(this);
+    _rinai = new riNai(this);  //初始角色
     initButton();
-    initLayout();
+    initLayout(); //切换了初始角色记得还要修改这个函数
 }
+//不是继承自widget的对象记得在这里释放
 chameleon::~chameleon()
 {
     delete ui;
-    delete S;
+    delete _rinai;
 }
 /*--------------------------------------初始化部分--------------------------------------------*/
 void chameleon::initWindow()//初始化主窗口
@@ -69,9 +70,9 @@ void chameleon::initButton()  //初始化按钮
     btn_setting->setIconSize(temp);
     //样式表
     setStyleSheet("QPushButton{border:4px solid black;"
-                  "background-color:rgb(200,210,255);border-radius: 10px;}"
-                  "QPushButton::hover{background-color:rgb(170,200,255);}"
-                  "QPushButton:pressed{background-color:rgb(60,70,200);}");
+                  "background-color:rgb(173, 216, 230);border-radius: 10px;}"
+                  "QPushButton::hover{background-color:rgb(180,255,255);}"
+                  "QPushButton:pressed{background-color:rgb(60,170,150);}");
 
     btn_setting->move(0,win_height-btn_size);
     btn_more->move(0,win_height-btn_size*2.2);
@@ -87,7 +88,7 @@ void chameleon::initButton()  //初始化按钮
 void chameleon::initLayout()//初始化布局管理器
 {
     body_part = new QHBoxLayout;
-    body_part->addWidget(S->body);
+    body_part->addWidget(_rinai->body);
 
     this->setLayout(body_part);
 }
@@ -135,7 +136,25 @@ void chameleon::testClicked()  //提供了一个共用的测试按钮，可以�
 
 /*------------------------------------------事件部分------------------------------------------*/
 //这里需要一个鼠标左键能拖动窗口移动的功能，事件这一块puck还是小白 所以就没写函数头了
+void chameleon::mousePressEvent(QMouseEvent *event)//鼠标按压时触发该事件，仅触发一次
+{
+    startPos = event->pos();//pos函数返回鼠标相对于当前窗口的位置
+    isMousePressed = true;
+}
 
+void chameleon::mouseMoveEvent(QMouseEvent *event)//在鼠标移动时会被多次调用
+{
+    if (isMousePressed) {
+        QPoint endPos = event->pos();           //鼠标瞬时移动某时刻相对于窗口位置
+        QPoint dist = endPos - startPos;        //以鼠标较起始位置的偏移量计算窗口落点的偏移量
+        move(x() + dist.x(), y() + dist.y());   //x()和y()是记录窗口相对于父窗口的位置，默认为0，因此此处move()效果为直接将窗口位移到落点处
+    }
+}
+
+void chameleon::mouseReleaseEvent(QMouseEvent *event)//此处必须要带参数，否则会因为虚函数的继承问题报错
+{
+    isMousePressed = false;
+}
 
 
 
