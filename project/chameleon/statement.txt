@@ -14,10 +14,10 @@ characters和windows都有对应的目录，里面是对应类的源码
 	
 	
 现在chameleon中主要有四个待完成的部分：
-	1、切换角色 void chameleon::dressClicked()   --Atrium(门)
+	1、切换角色 void chameleon::dressClicked()   --Atrium(门)  //未完成
 	2、“更多”菜单 void chameleon::moreClicked()  --marvelious（玄生）
-	3、设置大小 void chameleon::settingClicked()   --bao__zi(包子)
-	4、 鼠标拖动窗口   --dubiduba（蹦蹦兽）
+	3、设置大小 void chameleon::settingClicked()   --bao__zi(包子)  //几乎已完成？
+	4、 鼠标拖动窗口   --dubiduba（蹦蹦兽） //已完成
 character的负责者：
 	先维护好slime类（当然也可以是其他的），具体要求参见slime的源代码，这也许是个需要长期维护的大工程，暂定两个人负责
 	haro可以暂时不维护，或者由puck维护，主要是把haro的表情、换装搬过来，当然有人想维护这个的话可以揽下这个活
