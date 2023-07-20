@@ -26,6 +26,7 @@ private:
     QPushButton* btn_clock;
 
 
+
 };
 
 #endif // MORE_WIN_H
