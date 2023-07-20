@@ -8,14 +8,31 @@ chameleon::chameleon(QWidget *parent)
     ui->setupUi(this);
 
     setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
+    int coordX,coordY;//桌面坐标
+    QFile file("./file/file.dat");                                                    //文件的操作
+    file.open(QIODevice::ReadOnly);
+    QDataStream in(&file);
+    if(file.isOpen())//读取体型\相对桌面坐标
+        in>>size>>coordX>>coordY;
+    else{
+        size = 500;
+        coordX = x();
+        coordY = y();
+    }
+    file.close();
+    move(coordX,coordY);
 
     //初始化操作
     initWindow();
+
     More = new more_win;
     Dress =  new dress_win;
+
     _rinai = new riNai(this);  //初始角色
-    initButton();
-    initLayout(); //切换了初始角色记得还要修改这个函数
+    Set=new setwin(nullptr,this);
+    Set->setSize(size);
+    initButton(1,0);
+    initLayout();//切换了初始角色记得还要修改这个函数
 }
 //不是继承自widget的对象记得在这里释放
 chameleon::~chameleon()
@@ -23,6 +40,7 @@ chameleon::~chameleon()
     delete ui;
     delete _rinai;
 }
+
 /*--------------------------------------初始化部分--------------------------------------------*/
 void chameleon::initWindow()//初始化主窗口
 {
@@ -42,9 +60,11 @@ void chameleon::initWindow()//初始化主窗口
     setAttribute(Qt::WA_TranslucentBackground);//设置背景透明
     Qt::WindowFlags m_flags = windowFlags();
     setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);
+
 }
 
-void chameleon::initButton()  //初始化按钮
+
+void chameleon::initButton(bool a,double b)  //初始化按钮
 {
     btn_exit = new QPushButton(this);
     btn_dress = new QPushButton(this);
@@ -57,7 +77,7 @@ void chameleon::initButton()  //初始化按钮
     btn_more->setIcon(QIcon(":/src/images/icon/more.png"));
     btn_setting->setIcon(QIcon(":/src/images/icon/setting.png"));
     //设置按钮的大小
-    int btn_size = this->frameGeometry().width()/8;
+    int btn_size = 64;
     btn_exit->setFixedSize(btn_size,btn_size);
     btn_dress->setFixedSize(btn_size,btn_size);
     btn_more->setFixedSize(btn_size,btn_size);
@@ -79,6 +99,21 @@ void chameleon::initButton()  //初始化按钮
     btn_dress->move(0,win_height-btn_size*3.4);
     btn_exit->move(0,win_height-btn_size*4.6);
     //槽函数绑定
+    if (a==1)
+    {
+    btn_setting->move(0,387-btn_size+20);
+    btn_more->move(0,387-btn_size*2.2+20);
+    btn_dress->move(0,387-btn_size*3.4+20);
+    btn_exit->move(0,387-btn_size*4.6+20);
+    }
+    else
+    {
+    btn_setting->move(0+b,387-btn_size+b);
+    btn_more->move(0+b,387-btn_size*2.2+b);
+    btn_dress->move(0+b,387-btn_size*3.4+b);
+    btn_exit->move(0+b,387-btn_size*4.6+b);
+    }
+        //槽函数绑定
     connect(btn_exit, &QPushButton::clicked, QApplication::instance(), &QApplication::quit);
     connect(btn_dress,&QPushButton::clicked,this,&chameleon::dressClicked);
     connect(btn_more,&QPushButton::clicked,this,&chameleon::moreClicked);
@@ -95,6 +130,7 @@ void chameleon::initLayout()//初始化布局管理器
 
 
 
+
 /*----------------------------------------槽函数部分------------------------------------------*/
 
 /*对于弹出窗口的槽函数，窗口中具体功能的实现请在对应的窗口类中写，这里只负责弹出窗口*/
@@ -108,6 +144,7 @@ void chameleon::dressClicked()  //展示出可选的角色，这里可以使用�
     {
         Dress->hide();
     }
+
 }
 
 void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜单
@@ -123,9 +160,19 @@ void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜�
 }
 
 void chameleon::settingClicked()  //设置大小   设置的方式可以参考haro，也可以用其他方式，如果需要弹出窗口，请为这个窗口设置一个类，添加到windows目录中
-//注意，当窗口大小变化时，左侧按钮的位置也许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
+//注意，当窗口大小变化时，左侧按钮的位置许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
 {
+    if(Set->isHidden()){
+        //移动窗口坐标↓
+        Set->move(x()+frameGeometry().width()/2-230
+                            -Set->frameGeometry().width(),
+                        y()+frameGeometry().height()/2
+                            -Set->frameGeometry().height()/2);
 
+        Set->show();
+    }
+    else
+        Set->hide();
 
 }
 

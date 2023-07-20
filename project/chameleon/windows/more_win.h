@@ -14,7 +14,7 @@ class more_win : public QWidget
     Q_OBJECT
 
 public:
-    explicit more_win(QWidget *parent = nullptr);
+    explicit more_win(QWidget *parent=nullptr);
     ~more_win();
     void initButton(QWidget* parent);
 
