@@ -39,6 +39,10 @@ public:
     void testClicked();
 
     //
+protected://重载三个鼠标事件的函数
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 
 
 private:
@@ -62,6 +66,10 @@ private:
     QPushButton* btn_more;
     QPushButton* btn_setting;
     QPushButton* btn_test;
+
+//鼠标拖动部分
+    QPoint startPos;//记录起始坐标
+    bool isMousePressed;//判断是否点击
 
 };
 #endif // CHAMELEON_H
