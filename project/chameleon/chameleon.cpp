@@ -84,6 +84,10 @@ void chameleon::initButton()  //初始化按钮
     connect(btn_more,&QPushButton::clicked,this,&chameleon::moreClicked);
     connect(btn_setting,&QPushButton::clicked,this,&chameleon::settingClicked);
     connect(btn_test,&QPushButton::clicked,this,&chameleon::testClicked);
+    //初始化按钮显示
+    btnSwitch1 = 0;
+    btnSwitch2 = 0;
+    btnstatus();
 }
 void chameleon::initLayout()//初始化布局管理器
 {
@@ -136,10 +140,33 @@ void chameleon::testClicked()  //提供了一个共用的测试按钮，可以�
 
 /*------------------------------------------事件部分------------------------------------------*/
 //这里需要一个鼠标左键能拖动窗口移动的功能，事件这一块puck还是小白 所以就没写函数头了
+void chameleon::btnstatus()//设置显示状态
+{
+    btn_exit->setVisible(btnSwitch1);
+    btn_dress->setVisible(btnSwitch1);
+    btn_more->setVisible(btnSwitch1);
+    btn_setting->setVisible(btnSwitch1);
+}
+
 void chameleon::mousePressEvent(QMouseEvent *event)//鼠标按压时触发该事件，仅触发一次
 {
-    startPos = event->pos();//pos函数返回鼠标相对于当前窗口的位置
-    isMousePressed = true;
+    if(event->button() == Qt::LeftButton)
+    {
+        startPos = event->pos();//pos函数返回鼠标相对于当前窗口的位置
+        isMousePressed = true;
+    }
+    else if(event->button() == Qt::RightButton)
+    {
+        if(btnSwitch1)//如果是显示的就置为不显示
+        {
+            btnSwitch1 = 0;
+        }
+        else//否则就显示
+        {
+            btnSwitch1 = 1;
+        }
+        btnstatus();
+    }
 }
 
 void chameleon::mouseMoveEvent(QMouseEvent *event)//在鼠标移动时会被多次调用
@@ -147,7 +174,7 @@ void chameleon::mouseMoveEvent(QMouseEvent *event)//在鼠标移动时会被多�
     if (isMousePressed) {
         QPoint endPos = event->pos();           //鼠标瞬时移动某时刻相对于窗口位置
         QPoint dist = endPos - startPos;        //以鼠标较起始位置的偏移量计算窗口落点的偏移量
-        move(x() + dist.x(), y() + dist.y());   //x()和y()是记录窗口相对于父窗口的位置，默认为0，因此此处move()效果为直接将窗口位移到落点处
+        move(x()+dist.x(), y()+dist.y());       //x()和y()是记录窗口相对于父窗口的位置，默认为0，因此此处move()效果为直接将窗口位移到落点处
     }
 }
 
