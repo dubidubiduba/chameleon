@@ -14,19 +14,21 @@ class more_win : public QWidget
     Q_OBJECT
 
 public:
-    explicit more_win(QWidget *parent=nullptr);
+    explicit more_win(QWidget *parent = nullptr);
     ~more_win();
-    void initButton(QWidget* parent);
-
+    void initBtn();
 private:
     Ui::more_win *ui;
 
     QPushButton* btn_weather;
     QPushButton* btn_calendar;
     QPushButton* btn_clock;
-
-
-
+    QPushButton* btn_note;
+    QPushButton* btn_translation;
+    QPushButton* btn_music;
+    QPushButton* btn_screen;
+    QPushButton* btn_skip;
+    QPushButton* btn_communion;
 };
 
 #endif // MORE_WIN_H

@@ -31,7 +31,7 @@ void riNai::initBody()  //gpt写的，产生了奇妙的化学反应
 {
     body = new QLabel(m_parent);
     timer = new QTimer;
-    timer->start(100);
+    timer->start(250);
     connect(timer, &QTimer::timeout, this, &riNai::movement);
 
     int imageSize = qMax(body->width(), body->height()); // 获取图片大小限制为窗口的最小边长
