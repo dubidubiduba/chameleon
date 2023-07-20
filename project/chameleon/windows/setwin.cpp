@@ -62,13 +62,19 @@ void setwin::on_sizeSlider_valueChanged(int value)
     QRect windowGeometry=m_parent->geometry();
     int windowX = windowGeometry.x(); // 获取窗口的横坐标
     int windowY = windowGeometry.y(); // 获取窗口的纵坐标
+//    chameleon* parentWindow = qobject_cast<chameleon*>(m_parent);
     if(haroSize>temp)
     {
-        m_parent->move(windowX-value/160,windowY-value/160);
+        m_parent->move(windowX-value/50,windowY-value/50);//150,160
 //        m_parent->initButton(0,haroSize/50);
+         // 获取父窗口的指针，并调用其成员函数
+//          parentWindow->initButton(0,value/160);
     }
     else
-    m_parent->move(windowX+value/160,windowY+value/160);
+    {
+        m_parent->move(windowX+value/50,windowY+value/50);//140
+//          parentWindow->initButton(0,-value/140);
+    }
 }
 
 

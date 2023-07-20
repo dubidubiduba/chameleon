@@ -61,7 +61,7 @@ void chameleon::initWindow()//初始化主窗口
 }
 
 
-void chameleon::initButton(bool a,int b)  //初始化按钮
+void chameleon::initButton(bool a,double b)  //初始化按钮
 {
     btn_exit = new QPushButton(this);
     btn_dress = new QPushButton(this);
@@ -74,7 +74,7 @@ void chameleon::initButton(bool a,int b)  //初始化按钮
     btn_more->setIcon(QIcon(":/src/images/icon/more.png"));
     btn_setting->setIcon(QIcon(":/src/images/icon/setting.png"));
     //设置按钮的大小
-    int btn_size = this->frameGeometry().width()/8;
+    int btn_size = 64;
     btn_exit->setFixedSize(btn_size,btn_size);
     btn_dress->setFixedSize(btn_size,btn_size);
     btn_more->setFixedSize(btn_size,btn_size);
@@ -90,27 +90,26 @@ void chameleon::initButton(bool a,int b)  //初始化按钮
                   "background-color:rgb(200,210,255);border-radius: 10px;}"
                   "QPushButton::hover{background-color:rgb(170,200,255);}"
                   "QPushButton:pressed{background-color:rgb(60,70,200);}");
-    if (a)
-    { btn_setting->move(0,win_height-btn_size);
-    btn_more->move(0,win_height-btn_size*2.2);
-    btn_dress->move(0,win_height-btn_size*3.4);
-    btn_exit->move(0,win_height-btn_size*4.6);
+    if (a==1)
+    {
+    btn_setting->move(0,387-btn_size+20);
+    btn_more->move(0,387-btn_size*2.2+20);
+    btn_dress->move(0,387-btn_size*3.4+20);
+    btn_exit->move(0,387-btn_size*4.6+20);
     }
     else
     {
-    btn_setting->move(b,win_height-btn_size+b);
-    btn_more->move(b,win_height-btn_size*2.2+b);
-    btn_dress->move(b,win_height-btn_size*3.4+b);
-    btn_exit->move(b,win_height-btn_size*4.6+b);
+    btn_setting->move(0+b,387-btn_size+b);
+    btn_more->move(0+b,387-btn_size*2.2+b);
+    btn_dress->move(0+b,387-btn_size*3.4+b);
+    btn_exit->move(0+b,387-btn_size*4.6+b);
     }
-
-    //槽函数绑定
+        //槽函数绑定
     connect(btn_exit, &QPushButton::clicked, QApplication::instance(), &QApplication::quit);
     connect(btn_dress,&QPushButton::clicked,this,&chameleon::dressClicked);
     connect(btn_more,&QPushButton::clicked,this,&chameleon::moreClicked);
     connect(btn_setting,&QPushButton::clicked,this,&chameleon::settingClicked);
     connect(btn_test,&QPushButton::clicked,this,&chameleon::testClicked);
-
 }
 void chameleon::initLayout()//初始化布局管理器
 {
@@ -118,6 +117,7 @@ void chameleon::initLayout()//初始化布局管理器
     body_part->addWidget(S->body);
     this->setLayout(body_part);
 }
+
 
 
 
