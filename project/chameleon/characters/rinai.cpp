@@ -20,13 +20,25 @@ void riNai::bodyLoad()
         Bodys.push_back(QPixmap(QString(":/src/images/riNai-images/body/body%1.png").arg(i)));
     }
 }
-void riNai::initBody()
+/*void riNai::initBody()
 {
     body = new QLabel(m_parent);
     timer = new QTimer;
     timer->start(300);
     connect(timer,&QTimer::timeout,this,&riNai::movement);
+}*/
+void riNai::initBody()  //gpt写的，产生了奇妙的化学反应
+{
+    body = new QLabel(m_parent);
+    timer = new QTimer;
+    timer->start(300);
+    connect(timer, &QTimer::timeout, this, &riNai::movement);
+
+    int imageSize = qMax(body->width(), body->height()); // 获取图片大小限制为窗口的最小边长
+    body->setMinimumSize(imageSize, imageSize); // 设置窗口的最小尺寸
+
 }
+
 
 void riNai::movement()
 {
@@ -34,8 +46,8 @@ void riNai::movement()
     Imageset(body,Bodys[index]);
     index = (++index)%5;
 }
-#define B
-#ifdef A
+#define A
+#ifdef B
 void riNai::Imageset(QLabel* image,QPixmap pixmap)  //用来给label设置图片,主要用于整个pet的加载
 {
     int size = m_parent->frameGeometry().width();

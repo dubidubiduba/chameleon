@@ -9,13 +9,32 @@ chameleon::chameleon(QWidget *parent)
 
     setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
 
+    int coordX,coordY;//桌面坐标
+    QFile file("./file/file.dat");                                                    //文件的操作
+    file.open(QIODevice::ReadOnly);
+    QDataStream in(&file);
+    if(file.isOpen())//读取体型\相对桌面坐标
+        in>>size>>coordX>>coordY;
+    else{
+        size = 500;
+        coordX = x();
+        coordY = y();
+    }
+    file.close();
+    move(coordX,coordY);
+
     //初始化操作
     initWindow();
+
     More = new more_win;
     Dress =  new dress_win;
+    Set=new setwin(nullptr,this);
+
     _rinai = new riNai(this);  //初始角色
-    initButton();
     initLayout(); //切换了初始角色记得还要修改这个函数
+
+    Set->setSize(size);
+    initButton(1,0);
 }
 //不是继承自widget的对象记得在这里释放
 chameleon::~chameleon()
@@ -23,6 +42,7 @@ chameleon::~chameleon()
     delete ui;
     delete _rinai;
 }
+
 /*--------------------------------------初始化部分--------------------------------------------*/
 void chameleon::initWindow()//初始化主窗口
 {
@@ -32,19 +52,19 @@ void chameleon::initWindow()//初始化主窗口
     ScreenWidth = screenGeometry.width();
     ScreenHeight = screenGeometry.height();
     
-    //win_width = screenGeometry.width()/3.5;
-    //win_height = screenGeometry.height()/3.5;
     this->resize(win_width,win_height);
-    int winX= ScreenWidth-this->frameGeometry().width() - ScreenWidth/12;
-    int winY = ScreenHeight-this->frameGeometry().height() - ScreenHeight/12;
+    int winX= ScreenWidth/2-this->frameGeometry().width()/2;
+    int winY = ScreenHeight/2-this->frameGeometry().height()/2;
     this->move(winX,winY);
     //窗口置顶、透明
     setAttribute(Qt::WA_TranslucentBackground);//设置背景透明
     Qt::WindowFlags m_flags = windowFlags();
     setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);
+
 }
 
-void chameleon::initButton()  //初始化按钮
+
+void chameleon::initButton(bool a,int b)  //初始化按钮
 {
     btn_exit = new QPushButton(this);
     btn_dress = new QPushButton(this);
@@ -58,10 +78,10 @@ void chameleon::initButton()  //初始化按钮
     btn_setting->setIcon(QIcon(":/src/images/icon/setting.png"));
     //设置按钮的大小
     int btn_size = this->frameGeometry().width()/8;
-    btn_exit->setFixedSize(btn_size,btn_size);
-    btn_dress->setFixedSize(btn_size,btn_size);
-    btn_more->setFixedSize(btn_size,btn_size);
-    btn_setting->setFixedSize(btn_size,btn_size);
+    btn_exit->resize(btn_size,btn_size);
+    btn_dress->resize(btn_size,btn_size);
+    btn_more->resize(btn_size,btn_size);
+    btn_setting->resize(btn_size,btn_size);
     //设置按钮图标的大小
     QSize temp(btn_size/1.2,btn_size/1.2);
     btn_exit->setIconSize(temp);
@@ -75,9 +95,20 @@ void chameleon::initButton()  //初始化按钮
                   "QPushButton:pressed{background-color:rgb(60,170,150);}");
 
     btn_setting->move(0,win_height-btn_size);
+    if (a)
+    { btn_setting->move(0,win_height-btn_size);
     btn_more->move(0,win_height-btn_size*2.2);
     btn_dress->move(0,win_height-btn_size*3.4);
     btn_exit->move(0,win_height-btn_size*4.6);
+    }
+    else
+    {
+    btn_setting->move(b,win_height-btn_size+b);
+    btn_more->move(b,win_height-btn_size*2.2+b);
+    btn_dress->move(b,win_height-btn_size*3.4+b);
+    btn_exit->move(b,win_height-btn_size*4.6+b);
+    }
+
     //槽函数绑定
     connect(btn_exit, &QPushButton::clicked, QApplication::instance(), &QApplication::quit);
     connect(btn_dress,&QPushButton::clicked,this,&chameleon::dressClicked);
@@ -88,12 +119,12 @@ void chameleon::initButton()  //初始化按钮
     btnSwitch1 = 0;
     btnSwitch2 = 0;
     btnstatus();
+
 }
 void chameleon::initLayout()//初始化布局管理器
 {
     body_part = new QHBoxLayout;
     body_part->addWidget(_rinai->body);
-
     this->setLayout(body_part);
 }
 
@@ -112,6 +143,7 @@ void chameleon::dressClicked()  //展示出可选的角色，这里可以使用�
     {
         Dress->hide();
     }
+
 }
 
 void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜单
@@ -127,9 +159,19 @@ void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜�
 }
 
 void chameleon::settingClicked()  //设置大小   设置的方式可以参考haro，也可以用其他方式，如果需要弹出窗口，请为这个窗口设置一个类，添加到windows目录中
-//注意，当窗口大小变化时，左侧按钮的位置也许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
+//注意，当窗口大小变化时，左侧按钮的位置许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
 {
+    if(Set->isHidden()){
+        //移动窗口坐标↓
+        Set->move(x()+frameGeometry().width()/2-230
+                            -Set->frameGeometry().width(),
+                        y()+frameGeometry().height()/2
+                            -Set->frameGeometry().height()/2);
 
+        Set->show();
+    }
+    else
+        Set->hide();
 
 }
 
