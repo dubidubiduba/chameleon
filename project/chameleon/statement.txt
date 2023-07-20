@@ -12,7 +12,7 @@ characters和windows都有对应的目录，里面是对应类的源码
 	  
 	###每个类的功能尽量在对应类自己的代码里实现，主窗口只负责调度###
 	
-	
+-------------------开发阶段一
 现在chameleon中主要有四个待完成的部分：
 	1、切换角色 void chameleon::dressClicked()   --Atrium(门)  //未完成
 	2、“更多”菜单 void chameleon::moreClicked()  --marvelious（玄生）
@@ -23,6 +23,7 @@ character的负责者：
 	haro可以暂时不维护，或者由puck维护，主要是把haro的表情、换装搬过来，当然有人想维护这个的话可以揽下这个活
 
 ------------------开发阶段二
+moreClicked，”更多“菜单的分支还需要继续维护
 扩展：more_win
     # 天气    --return
     # 记事本  --return
@@ -30,7 +31,7 @@ character的负责者：
     # 日历 嵌入任务表  --NaTie (拿铁)
   chameleon窗口的布局 --bao__zi(包子)
   切换角色 void chameleon::dressClicked()   --Atrium(门)/dubiduba（蹦蹦兽）
-  互动： --puck
+  互动： --puck有空可能会写一写
    定时气泡
    音效
 
