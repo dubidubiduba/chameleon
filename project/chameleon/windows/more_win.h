@@ -4,7 +4,8 @@
 #include <QWidget>
 #include <QFormLayout>
 #include <QPushButton>
-
+#include <QButtonGroup>
+#include <QWheelEvent>
 namespace Ui {
 class more_win;
 }
@@ -14,18 +15,25 @@ class more_win : public QWidget
     Q_OBJECT
 
 public:
-    explicit more_win(QWidget *parent = nullptr);
+    more_win(QWidget *parent = nullptr,QWidget* p=nullptr);
     ~more_win();
     void initBtn();
+    void initWindow();
     void initConnect();
+    void setButtonsGeo(QPushButton* button);
 //
     void weatherClicked();
     void notepadClicked();
     void clockClicked();
     void calendarClicked();
 
+    void wheelEvent(QWheelEvent *event);
+    void moveButtons(int speed,int flag);
+
 private:
     Ui::more_win *ui;
+    QWidget* m_parent;
+//
 
     QPushButton* btn_weather;
     QPushButton* btn_calendar;
@@ -36,6 +44,8 @@ private:
     QPushButton* btn_screen;
     QPushButton* btn_skip;
     QPushButton* btn_communion;
+
+    double btnSize ;
 };
 
 #endif // MORE_WIN_H
