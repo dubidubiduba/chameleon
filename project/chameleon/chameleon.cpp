@@ -25,7 +25,7 @@ chameleon::chameleon(QWidget *parent)
     //初始化操作
     initWindow();
 
-    More = new more_win;
+    More = new more_win(nullptr,this);
     Dress =  new dress_win;
 
     _rinai = new riNai(this);  //初始角色
@@ -155,6 +155,7 @@ void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜�
 {
     if(More->isHidden())
     {
+        More->initWindow();
         More->show();
     }
     else
