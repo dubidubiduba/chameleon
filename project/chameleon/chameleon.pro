@@ -15,7 +15,7 @@ SOURCES += \
     chameleon.cpp \
     windows/dress_win.cpp \
     windows/more_win.cpp \
-    windows/setwin.cpp
+    windows/set_win.cpp
 
 HEADERS += \
     chameleon.h \
@@ -23,7 +23,7 @@ HEADERS += \
     characters/rinai.h \
     windows/dress_win.h \
     windows/more_win.h \
-    windows/setwin.h
+    windows/set_win.h
 
 FORMS += \
     chameleon.ui \
@@ -31,7 +31,7 @@ FORMS += \
     #more_win.ui \
     windows/dress_win.ui \
     windows/more_win.ui \
-    windows/setwin.ui
+    windows/set_win.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

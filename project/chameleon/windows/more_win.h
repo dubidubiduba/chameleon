@@ -17,6 +17,13 @@ public:
     explicit more_win(QWidget *parent = nullptr);
     ~more_win();
     void initBtn();
+    void initConnect();
+//
+    void weatherClicked();
+    void notepadClicked();
+    void clockClicked();
+    void calendarClicked();
+
 private:
     Ui::more_win *ui;
 

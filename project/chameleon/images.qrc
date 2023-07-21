@@ -48,5 +48,6 @@
         <file>src/images/riNai-images/body/body3.png</file>
         <file>src/images/riNai-images/body/body2.png</file>
         <file>src/images/riNai-images/body/body1.png</file>
+        <file>src/images/icon/note.png</file>
     </qresource>
 </RCC>

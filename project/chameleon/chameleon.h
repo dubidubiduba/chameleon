@@ -15,7 +15,7 @@
 #include "characters/haro.h"
 #include "windows/more_win.h"
 #include "windows/dress_win.h"
-#include"windows/setwin.h"
+#include"windows/set_win.h"
 #include "characters/rinai.h"
 
 

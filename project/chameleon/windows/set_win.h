@@ -1,5 +1,5 @@
-#ifndef SETWIN_H
-#define SETWIN_H
+#ifndef SET_WIN_H
+#define SET_WIN_H
 
 #include "windows/more_win.h"
 #include <QWidget>
@@ -38,4 +38,4 @@ private:
     Ui::setwin *ui;
 };
 
-#endif // SETWIN_H
+#endif // SET_WIN_H

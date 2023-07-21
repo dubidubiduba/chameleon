@@ -39,10 +39,41 @@ void more_win::initBtn()
     btn_calendar->setIcon(QIcon(":/src/images/icon/calendar.png"));
     btn_clock->setIcon(QIcon(":/src/images/icon/clock.png"));
     btn_weather->setIcon(QIcon(":/src/images/icon/weather.png"));
-    btn_note->setIcon(QIcon(":/src/images/icon/note.jpg"));
+    btn_note->setIcon(QIcon(":/src/images/icon/note.png"));
     btn_screen->setIcon(QIcon(":/src/images/icon/screen.jpg"));
     btn_skip->setIcon(QIcon(":/src/images/icon/skip.jpg"));
     btn_communion->setIcon(QIcon(":/src/images/icon/communion.jpg"));
     btn_translation->setIcon(QIcon(":/src/images/icon/translation.jpg"));
     btn_music->setIcon(QIcon(":/src/images/icon/music.png"));
+}
+
+void more_win::initConnect()
+{
+    connect(btn_weather,&QPushButton::clicked,this,&more_win::weatherClicked);
+    connect(btn_note,&QPushButton::clicked,this,&more_win::notepadClicked);
+    connect(btn_clock,&QPushButton::clicked,this,&more_win::clockClicked);
+    connect(btn_calendar,&QPushButton::clicked,this,&more_win::calendarClicked);
+}
+/*---------------------------------槽函数部分-----------------------------------*/
+/*
+    点击对应按钮实现对应的功能，如果需要弹出窗口，窗口类的命名规范参考windows目录下的那三个窗口
+
+*/
+void more_win::weatherClicked()
+{
+
+}
+
+void more_win::notepadClicked()
+{
+
+}
+
+void more_win::clockClicked()
+{
+
+}
+
+void more_win::calendarClicked()
+{
 }
