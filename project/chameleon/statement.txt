@@ -24,13 +24,15 @@ character的负责者：
 
 ------------------开发阶段二
 moreClicked，”更多“菜单的分支还需要继续维护
-扩展：more_win
+扩展：more_win   
     # 天气    --return
     # 记事本  --return
     # 番茄钟，到点提醒  --marvelious（玄生）
     # 日历 嵌入任务表  --NaTie (拿铁)
+  ：负责扩展功能的同学请转到 more_win.cpp
+
   chameleon窗口的布局 --bao__zi(包子)
-  切换角色 void chameleon::dressClicked()   --Atrium(门)/dubiduba（蹦蹦兽）
+  切换角色 void chameleon::dressClicked() dress_win.cpp/.h   --Atrium(门)/dubiduba（蹦蹦兽）
   互动： --puck有空可能会写一写
    定时气泡
    音效
