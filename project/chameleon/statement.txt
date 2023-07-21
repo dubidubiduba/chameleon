@@ -1,0 +1,44 @@
+puck能力有限，架构成这样已经尽力了
+
+#######提交代码的时候删除.pro.user文件    //不必要了，添加了.ignore文件
+
+整个源码分为三个部分： characters、windows、和chameleon（主窗口）
+characters和windows都有对应的目录，里面是对应类的源码
+	characters：
+	  角色的部分，里面每一个类都是一个角色，目前有slime和haro两个角色，后续添加角色就在这个目录下创建类
+	windows：
+	  窗口部分，这里面是基于chameleon（主窗口）的弹窗，主要包含各个控件产生的弹窗，每个弹窗都是一个单独的类
+	 对于这部分，要求窗口对象一旦被实例化，就能显示自己的窗口，功能也都齐全。 
+	  
+	###每个类的功能尽量在对应类自己的代码里实现，主窗口只负责调度###
+	
+-------------------开发阶段一
+现在chameleon中主要有四个待完成的部分：
+	1、切换角色 void chameleon::dressClicked()   --Atrium(门)  //未完成
+	2、“更多”菜单 void chameleon::moreClicked()  --marvelious（玄生）
+	3、设置大小 void chameleon::settingClicked()   --bao__zi(包子)  //几乎已完成？
+	4、 鼠标拖动窗口   --dubiduba（蹦蹦兽） //已完成
+character的负责者：
+	先维护好slime类（当然也可以是其他的），具体要求参见slime的源代码，这也许是个需要长期维护的大工程，暂定两个人负责
+	haro可以暂时不维护，或者由puck维护，主要是把haro的表情、换装搬过来，当然有人想维护这个的话可以揽下这个活
+
+------------------开发阶段二
+moreClicked，”更多“菜单的分支还需要继续维护
+扩展：more_win   
+    # 天气    --return
+    # 记事本  --return
+    # 番茄钟，到点提醒  --marvelious（玄生）
+    # 日历 嵌入任务表  --NaTie (拿铁)
+  ：负责扩展功能的同学请转到 more_win.cpp
+
+  chameleon窗口的布局 --bao__zi(包子)
+  切换角色 void chameleon::dressClicked() dress_win.cpp/.h   --Atrium(门)/dubiduba（蹦蹦兽）
+  互动： --puck有空可能会写一写
+   定时气泡
+   音效
+
+
+尽量不要修改与自己负责的部分无关的代码，要修改先联系puck
+技术上的问题可以在群里多交流
+架构的问题找puck
+	
