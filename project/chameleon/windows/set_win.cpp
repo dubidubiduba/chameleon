@@ -1,5 +1,6 @@
 #include "set_win.h"
 #include "ui_set_win.h"
+#include"chameleon.h"
 
 setwin::setwin(QWidget *parent,QWidget *p) :
     QWidget(parent),
@@ -7,18 +8,18 @@ setwin::setwin(QWidget *parent,QWidget *p) :
 {
     ui->setupUi(this);
 
-//    QBitmap bmp(this->size());//设置圆角边框
-//    bmp.fill();
-//    QPainter d(&bmp);
-//    d.setPen(Qt::NoPen);
-//    d.setBrush(Qt::black);
-//    d.drawRoundedRect(bmp.rect(),50,50);
-//    setMask(bmp);
-//    setWindowOpacity(0.95);//设置透明度
-//    setStyleSheet("background-color:white;");
+    QBitmap bmp(this->size());//设置圆角边框
+    bmp.fill();
+    QPainter d(&bmp);
+    d.setPen(Qt::NoPen);
+    d.setBrush(Qt::black);
+    d.drawRoundedRect(bmp.rect(),50,50);
+    setMask(bmp);
+    setWindowOpacity(0.95);//设置透明度
+    setStyleSheet("background-color:white;");
 
-//    Qt::WindowFlags m_flags = windowFlags();//保持窗口置顶1
-//    setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);//保持窗口置顶2
+    Qt::WindowFlags m_flags = windowFlags();//保持窗口置顶1
+    setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);//保持窗口置顶2
 
     m_parent=p;
 }
@@ -57,23 +58,30 @@ void setwin::on_sizeSlider_valueChanged(int value)
     int temp=haroSize;
     haroSize = value;
     sizeNum->setNum(haroSize);
-    m_parent->resize(haroSize,haroSize);
+    if(value<=250)
+        return;
+    m_parent->resize(haroSize*1.4,haroSize*1.4);
     QRect windowGeometry=m_parent->geometry();
+    int sizew=m_parent->width();   //窗口的宽度
+    int sizeh=m_parent->height();    // 窗口的高度
+
     int windowX = windowGeometry.x(); // 获取窗口的横坐标
     int windowY = windowGeometry.y(); // 获取窗口的纵坐标
-//    chameleon* parentWindow = qobject_cast<chameleon*>(m_parent);
+    chameleon* parentWindow = qobject_cast<chameleon*>(m_parent);
+
     if(haroSize>temp)
     {
-        m_parent->move(windowX-value/150,windowY-value/150);//150,160
-//        m_parent->initButton(0,haroSize/50);
-         // 获取父窗口的指针，并调用其成员函数
-//          parentWindow->initButton(0,value/160);
+
+        m_parent->move(windowX-value/150,windowY-value/150);
+        //获取父窗口的指针，并调用其成员函数
+        parentWindow->reinitButton();
     }
     else
     {
         m_parent->move(windowX+value/150,windowY+value/150);//140
-//          parentWindow->initButton(0,-value/140);
+        parentWindow->reinitButton();
     }
 }
+
 
 

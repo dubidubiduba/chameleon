@@ -15,7 +15,7 @@ chameleon::chameleon(QWidget *parent)
     if(file.isOpen())//读取体型\相对桌面坐标
         in>>size>>coordX>>coordY;
     else{
-        size = 500;
+        size = 100;
         coordX = x();
         coordY = y();
     }
@@ -31,7 +31,7 @@ chameleon::chameleon(QWidget *parent)
     _rinai = new riNai(this);  //初始角色
     Set=new setwin(nullptr,this);
     Set->setSize(size);
-    initButton(1,0);
+    initButton();
     initLayout();//切换了初始角色记得还要修改这个函数
 }
 //不是继承自widget的对象记得在这里释放
@@ -64,7 +64,7 @@ void chameleon::initWindow()//初始化主窗口
 }
 
 
-void chameleon::initButton(bool a,double b)  //初始化按钮
+void chameleon::initButton()  //初始化按钮
 {
     btn_exit = new QPushButton(this);
     btn_dress = new QPushButton(this);
@@ -77,13 +77,13 @@ void chameleon::initButton(bool a,double b)  //初始化按钮
     btn_more->setIcon(QIcon(":/src/images/icon/more.png"));
     btn_setting->setIcon(QIcon(":/src/images/icon/setting.png"));
     //设置按钮的大小
-    int btn_size = 64;
+    int btn_size = 50;
     btn_exit->setFixedSize(btn_size,btn_size);
     btn_dress->setFixedSize(btn_size,btn_size);
     btn_more->setFixedSize(btn_size,btn_size);
     btn_setting->setFixedSize(btn_size,btn_size);
     //设置按钮图标的大小
-    QSize temp(btn_size/1.2,btn_size/1.2);
+    QSize temp(btn_size/2,btn_size/2);
     btn_exit->setIconSize(temp);
     btn_dress->setIconSize(temp);
     btn_more->setIconSize(temp);
@@ -93,26 +93,15 @@ void chameleon::initButton(bool a,double b)  //初始化按钮
                   "background-color:rgb(173, 216, 230);border-radius: 10px;}"
                   "QPushButton::hover{background-color:rgb(180,255,255);}"
                   "QPushButton:pressed{background-color:rgb(60,170,150);}");
+    // 获取窗口的宽度和高度
+    int windowWidth = this->width();      // 窗口的宽度
+    int windowHeight = this->height();    // 窗口的高度
 
-    btn_setting->move(0,win_height-btn_size);
-    btn_more->move(0,win_height-btn_size*2.2);
-    btn_dress->move(0,win_height-btn_size*3.4);
-    btn_exit->move(0,win_height-btn_size*4.6);
-    //槽函数绑定
-    if (a==1)
-    {
-    btn_setting->move(0,387-btn_size+20);
-    btn_more->move(0,387-btn_size*2.2+20);
-    btn_dress->move(0,387-btn_size*3.4+20);
-    btn_exit->move(0,387-btn_size*4.6+20);
-    }
-    else
-    {
-    btn_setting->move(0+b,387-btn_size+b);
-    btn_more->move(0+b,387-btn_size*2.2+b);
-    btn_dress->move(0+b,387-btn_size*3.4+b);
-    btn_exit->move(0+b,387-btn_size*4.6+b);
-    }
+    btn_setting->move(0,windowHeight/2+70);
+    btn_more->move(0,windowHeight/2+8);
+    btn_dress->move(0,windowHeight/2-58);
+    btn_exit->move(0,windowHeight/2-120);
+
         //槽函数绑定
     connect(btn_exit, &QPushButton::clicked, QApplication::instance(), &QApplication::quit);
     connect(btn_dress,&QPushButton::clicked,this,&chameleon::dressClicked);
@@ -124,6 +113,64 @@ void chameleon::initButton(bool a,double b)  //初始化按钮
     btnSwitch2 = 0;
     btnstatus();
 }
+void chameleon::reinitButton()
+{
+    QRect windowGeometry=this->geometry();
+
+    int windowX = windowGeometry.x(); // 获取窗口的横坐标
+    int windowY = windowGeometry.y(); // 获取窗口的纵坐标
+
+    // 获取窗口的宽度和高度
+    int windowWidth = this->width();      // 窗口的宽度
+    int windowHeight = this->height();    // 窗口的高度
+
+    QRect buttonRect1 = btn_setting->geometry();
+    int btn_setting_x = buttonRect1.x();  // 按钮的 x 坐标
+    int btn_setting_y = buttonRect1.y();  // 按钮的 y 坐标
+    QRect buttonRect2 = btn_more ->geometry();
+    int btn_more_x = buttonRect2.x();  // 按钮的 x 坐标
+    int btn_more_y = buttonRect2.y();  // 按钮的 y 坐标
+    QRect buttonRect3 = btn_more ->geometry();
+    int btn_dress_x = buttonRect3.x();  // 按钮的 x 坐标
+    int btn_dress_y = buttonRect3.y();  // 按钮的 y 坐标
+    QRect buttonRect4 = btn_more ->geometry();
+    int btn_exit_x = buttonRect4.x();  // 按钮的 x 坐标
+    int btn_exit_y = buttonRect4.y();  // 按钮的 y 坐标
+    int temp1=387-64+20;
+    int temp2=387-64*2.2+20;
+    int temp3=387-64*3.4+20;
+    int temp4=387-64*4.6+20;
+
+//    btn_exit->setFixedSize(64/4,64/4);
+//    btn_dress->setFixedSize(64/4,64/4);
+//    btn_more->setFixedSize(64/4,64/4);
+//    btn_setting->setFixedSize(64/4,64/4);
+
+//    QSize temp(64/4,64/4);
+//    btn_exit->setIconSize(temp);
+//    btn_dress->setIconSize(temp);
+//    btn_more->setIconSize(temp);
+//    btn_setting->setIconSize(temp);
+
+    //    if()
+    //    if(b<0)
+    //    {
+    //        temp1=buttonRect1.y();
+    //        temp2=buttonRect2.y();
+    //        temp3=buttonRect3.y();
+    //        temp4=buttonRect4.y();
+    //    }
+    //    btn_setting->move(buttonRect1.x()+a,temp1+b);
+    //    btn_more->move(buttonRect2.x()+a,temp2+b);
+    //    btn_dress->move(buttonRect3.x()+a,temp3+b);
+    //    btn_exit->move(buttonRect4.x()+a,temp4+b);
+    btn_setting->move(0,windowHeight/2+70);
+    btn_more->move(0,windowHeight/2+8);
+    btn_dress->move(0,windowHeight/2-58);
+    btn_exit->move(0,windowHeight/2-120);
+
+}
+
 void chameleon::initLayout()//初始化布局管理器
 {
     body_part = new QHBoxLayout;
