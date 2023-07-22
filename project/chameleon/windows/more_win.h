@@ -6,6 +6,8 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QWheelEvent>
+#include<QPixmap>
+#include <QFileDialog>
 namespace Ui {
 class more_win;
 }
@@ -30,6 +32,8 @@ public:
 
     void wheelEvent(QWheelEvent *event);
     void moveButtons(int speed,int flag);
+
+
 
 private:
     Ui::more_win *ui;

@@ -1,8 +1,7 @@
 #include "more_win.h"
 #include "ui_more_win.h"
 #include<QScreen>
-#include<QPixmap>
-#include <QFileDialog>
+
 
 more_win::more_win(QWidget *parent,QWidget* p) :
     QWidget(parent),
@@ -93,6 +92,10 @@ void more_win::moveButtons(int speed,int flag)
     btn_screensh->move(X,btn_screensh->y()+temp);
 }
 
+
+
+
+
 /*---------------------------------槽函数部分-----------------------------------*/
 /*
     点击对应按钮实现对应的功能，如果需要弹出窗口，窗口类的命名规范参考windows目录下的那三个窗口
@@ -130,6 +133,8 @@ void more_win::screenshotClicked()
         }
     }
 }
+
+
 /*--------------------------------------------------------------------*/
 void more_win::wheelEvent(QWheelEvent *event)
 {
