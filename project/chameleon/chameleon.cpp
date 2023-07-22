@@ -217,10 +217,11 @@ void chameleon::settingClicked()  //设置大小   设置的方式可以参考ha
 {
     if(Set->isHidden()){
         //移动窗口坐标↓
-        Set->move(x()+frameGeometry().width()/2-230
-                            -Set->frameGeometry().width(),
-                        y()+frameGeometry().height()/2
-                            -Set->frameGeometry().height()/2);
+//        Set->move(x()+frameGeometry().width()/2-230
+//                            -Set->frameGeometry().width(),
+//                        y()+frameGeometry().height()/2
+//                            -Set->frameGeometry().height()/2);
+        Set->move(x()-Set->geometry().width()-100,y()+geometry().height()/2-Set->geometry().height()/2);
         Set->show();
     }
     else
