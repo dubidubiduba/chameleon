@@ -168,6 +168,7 @@ void chameleon::reinitButton()
     btn_dress->move(0,windowHeight/2-58);
     btn_exit->move(0,windowHeight/2-120);
 
+
 }
 
 
