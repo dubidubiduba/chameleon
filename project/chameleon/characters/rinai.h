@@ -21,8 +21,9 @@ public:
     void Imageset(QLabel* image,QPixmap pixmap);
 
     QVBoxLayout* Body;
-private:
     QLabel* body;
+private:
+
     QWidget* m_parent;
     std::vector<QPixmap> Bodys;
     QTimer* timer;

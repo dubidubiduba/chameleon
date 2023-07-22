@@ -58,18 +58,19 @@ private:
 //character部分
     haro* _haro;
     riNai* _rinai;
+
 //窗口部分
     more_win *More;
     dress_win *Dress;
     setwin *Set;
     int size;//体型大小
 
+
 //按钮部分
     QPushButton* btn_exit;
     QPushButton* btn_dress;
     QPushButton* btn_more;
     QPushButton* btn_setting;
-    QPushButton* btn_test;
 
     int btnSwitch1,btnSwitch2;//按钮显示开关
 

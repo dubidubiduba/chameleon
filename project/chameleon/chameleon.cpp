@@ -7,7 +7,7 @@ chameleon::chameleon(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
+    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题
     int coordX,coordY;//桌面坐标
     QFile file("./file/file.dat");                                                    //文件的操作
     file.open(QIODevice::ReadOnly);
@@ -69,7 +69,6 @@ void chameleon::initButton()  //初始化按钮
     btn_dress = new QPushButton(this);
     btn_more = new QPushButton(this);
     btn_setting = new QPushButton(this);
-    btn_test = new QPushButton("test",this);
     //加载按钮图标
     btn_exit->setIcon(QIcon(":/src/images/icon/close.png"));
     btn_dress->setIcon(QIcon(":/src/images/icon/dress.png"));
@@ -106,7 +105,6 @@ void chameleon::initButton()  //初始化按钮
     connect(btn_dress,&QPushButton::clicked,this,&chameleon::dressClicked);
     connect(btn_more,&QPushButton::clicked,this,&chameleon::moreClicked);
     connect(btn_setting,&QPushButton::clicked,this,&chameleon::settingClicked);
-    connect(btn_test,&QPushButton::clicked,this,&chameleon::testClicked);
     //初始化按钮显示
     btnSwitch1 = 0;
     btnSwitch2 = 0;
@@ -218,11 +216,6 @@ void chameleon::settingClicked()  //设置大小   设置的方式可以参考ha
     }
     else
         Set->hide();
-
-}
-
-void chameleon::testClicked()  //提供了一个共用的测试按钮，可以用来测试一些小功能 ，合并代码时请恢复
-{
 
 }
 

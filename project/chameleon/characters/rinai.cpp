@@ -29,7 +29,7 @@ void riNai::bodyLoad()
 void riNai::initBody()  //gpt写的，产生了奇妙的化学反应
 {
     Body = new QVBoxLayout(m_parent);
-    body = new QLabel;
+    body = new QLabel(m_parent);
     Body->addWidget(body);
     timer = new QTimer;
     timer->start(250);
