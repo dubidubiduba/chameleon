@@ -13,6 +13,7 @@ SOURCES += \
     characters/rinai.cpp \
     main.cpp \
     chameleon.cpp \
+    windows/calendar_win.cpp \
     windows/dress_win.cpp \
     windows/more_win.cpp \
     windows/set_win.cpp
@@ -21,6 +22,7 @@ HEADERS += \
     chameleon.h \
     characters/haro.h \
     characters/rinai.h \
+    windows/calendar_win.h \
     windows/dress_win.h \
     windows/more_win.h \
     windows/set_win.h
@@ -29,6 +31,7 @@ FORMS += \
     chameleon.ui \
     #dress_win.ui \
     #more_win.ui \
+    windows/calendar_win.ui \
     windows/dress_win.ui \
     windows/more_win.ui \
     windows/set_win.ui

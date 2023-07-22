@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QWheelEvent>
+#include "calendar_win.h"
 namespace Ui {
 class more_win;
 }
@@ -29,6 +30,8 @@ public:
 
     void wheelEvent(QWheelEvent *event);
     void moveButtons(int speed,int flag);
+public:
+    calendar_win *Calendar;
 
 private:
     Ui::more_win *ui;

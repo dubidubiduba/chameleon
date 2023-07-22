@@ -10,6 +10,7 @@ more_win::more_win(QWidget *parent,QWidget* p) :
     initWindow();
     initBtn();
     initConnect();
+    Calendar=new calendar_win(nullptr,this);
 }
 
 more_win::~more_win()
@@ -108,6 +109,18 @@ void more_win::clockClicked()
 
 void more_win::calendarClicked()
 {
+    if(Calendar->isHidden())
+    {   Calendar->move(x()-Calendar->frameGeometry().width(),y()+frameGeometry().height()/2-Calendar->frameGeometry().height()/2);
+        Calendar->show();
+    }
+    else
+    {
+        Calendar->hide();
+    }
+
+
+
+
 }
 
 /*--------------------------------------------------------------------*/
