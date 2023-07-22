@@ -72,6 +72,7 @@ private:
     QPushButton* btn_setting;
     QPushButton* btn_test;
 
+
     int btnSwitch1,btnSwitch2;//按钮显示开关
 
 //鼠标拖动部分

@@ -1,5 +1,8 @@
 #include "more_win.h"
 #include "ui_more_win.h"
+#include<QScreen>
+#include<QPixmap>
+#include <QFileDialog>
 
 more_win::more_win(QWidget *parent,QWidget* p) :
     QWidget(parent),
@@ -36,19 +39,21 @@ void more_win::initBtn()
     btn_weather     =new QPushButton(this);
     btn_note     =new QPushButton(this);
     btn_music     =new QPushButton(this);
+    btn_screensh=new QPushButton(this);
 
     setStyleSheet("QPushButton{border:4px solid black;"
                   "background-color:rgb(173, 216, 230);border-radius: 10px;}"
                   "QPushButton::hover{background-color:rgb(180,255,255);}"
                   "QPushButton:pressed{background-color:rgb(60,170,150);}");
 
+    btn_screensh->setIcon(QIcon(":/src/images/icon/screenshot.png"));
     btn_calendar->setIcon(QIcon(":/src/images/icon/calendar.png"));
     btn_clock->setIcon(QIcon(":/src/images/icon/clock.png"));
     btn_weather->setIcon(QIcon(":/src/images/icon/weather.png"));
     btn_note->setIcon(QIcon(":/src/images/icon/note.png"));
     btn_music->setIcon(QIcon(":/src/images/icon/music.png"));
 
-
+    setButtonsGeo(btn_screensh);
     setButtonsGeo(btn_calendar);
     setButtonsGeo(btn_clock);
     setButtonsGeo(btn_weather);
@@ -72,6 +77,7 @@ void more_win::initConnect()
     connect(btn_clock,&QPushButton::clicked,this,&more_win::clockClicked);
     connect(btn_weather,&QPushButton::clicked,this,&more_win::weatherClicked);
     connect(btn_note,&QPushButton::clicked,this,&more_win::notepadClicked);
+    connect(btn_screensh,&QPushButton::clicked,this,&more_win::screenshotClicked);
 
 }
 
@@ -84,6 +90,7 @@ void more_win::moveButtons(int speed,int flag)
     btn_weather->move(X,btn_weather->y()+temp);
     btn_note->move(X,btn_note->y()+temp);
     btn_music->move(X,btn_music->y()+temp);
+    btn_screensh->move(X,btn_screensh->y()+temp);
 }
 
 /*---------------------------------槽函数部分-----------------------------------*/
@@ -109,7 +116,20 @@ void more_win::clockClicked()
 void more_win::calendarClicked()
 {
 }
+void more_win::screenshotClicked()
+{
+    QScreen *screen = QGuiApplication::primaryScreen();
+    if (screen)
+    {
+        QPixmap screenshot = screen->grabWindow(0);
 
+        QString filePath = QFileDialog::getSaveFileName(this, "Save Screenshot", "", "Images (*.png)");
+        if (!filePath.isEmpty())
+        {
+            screenshot.save(filePath);
+        }
+    }
+}
 /*--------------------------------------------------------------------*/
 void more_win::wheelEvent(QWheelEvent *event)
 {

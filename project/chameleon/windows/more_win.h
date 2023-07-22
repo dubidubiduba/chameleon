@@ -26,6 +26,7 @@ public:
     void notepadClicked();
     void clockClicked();
     void calendarClicked();
+    void screenshotClicked();
 
     void wheelEvent(QWheelEvent *event);
     void moveButtons(int speed,int flag);
@@ -44,7 +45,7 @@ private:
     QPushButton* btn_screen;
     QPushButton* btn_skip;
     QPushButton* btn_communion;
-
+    QPushButton* btn_screensh;
     double btnSize ;
 };
 
