@@ -169,6 +169,7 @@ void chameleon::reinitButton()
     btn_dress->move(0,windowHeight/2-58);
     btn_exit->move(0,windowHeight/2-120);
 
+
 }
 
 void chameleon::initLayout()//初始化布局管理器
@@ -220,7 +221,6 @@ void chameleon::settingClicked()  //设置大小   设置的方式可以参考ha
                             -Set->frameGeometry().width(),
                         y()+frameGeometry().height()/2
                             -Set->frameGeometry().height()/2);
-
         Set->show();
     }
     else

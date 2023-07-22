@@ -58,7 +58,7 @@ void setwin::on_sizeSlider_valueChanged(int value)
     int temp=haroSize;
     haroSize = value;
     sizeNum->setNum(haroSize);
-    if(value<=250)
+    if(value<=170)
         return;
     m_parent->resize(haroSize*1.4,haroSize*1.4);
     QRect windowGeometry=m_parent->geometry();
@@ -71,7 +71,6 @@ void setwin::on_sizeSlider_valueChanged(int value)
 
     if(haroSize>temp)
     {
-
         m_parent->move(windowX-value/150,windowY-value/150);
         //获取父窗口的指针，并调用其成员函数
         parentWindow->reinitButton();
