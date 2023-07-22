@@ -20,10 +20,10 @@ haro::~haro()
 }
 void haro::initBody()
 {
-    bodyImage = new QLabel;
-    earsImage = new QLabel;
-    eyesImage = new QLabel;
-    stripeImage = new QLabel;
+    bodyImage = new QLabel(m_parent);
+    earsImage = new QLabel(m_parent);
+    eyesImage = new QLabel(m_parent);
+    stripeImage = new QLabel(m_parent);
 
     Body = new QVBoxLayout(m_parent);
     ears_part = new QVBoxLayout(bodyImage);

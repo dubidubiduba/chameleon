@@ -28,7 +28,7 @@ chameleon::chameleon(QWidget *parent)
     More = new more_win(nullptr,this);
     Dress =  new dress_win;
 
-    _rinai = new riNai(this);  //初始角色  主窗口和角色有关联的只有这里
+    _haro = new haro(this);  //初始角色  主窗口和角色有关联的只有这里
     Set=new setwin(nullptr,this);
     Set->setSize(size);
     initButton();
