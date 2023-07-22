@@ -116,11 +116,11 @@ void more_win::wheelEvent(QWheelEvent *event)
     static int speed = 40;//滚动速度
     if(event->delta()<0)
     {
-        moveButtons(speed,-1);
+        if(btn_music->y()+btnSize >= this->height())moveButtons(speed,-1);
     }
     else
     {
-        moveButtons(speed,1);
+        if(btn_calendar->y() != 0) moveButtons(speed,1);
     }
     update();
 }

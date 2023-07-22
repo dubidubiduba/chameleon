@@ -17,7 +17,7 @@ setwin::setwin(QWidget *parent,QWidget *p) :
     setMask(bmp);
     setWindowOpacity(0.95);//设置透明度
     setStyleSheet("background-color:white;");
-
+    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);
     Qt::WindowFlags m_flags = windowFlags();//保持窗口置顶1
     setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);//保持窗口置顶2
 
@@ -58,7 +58,7 @@ void setwin::on_sizeSlider_valueChanged(int value)
     int temp=haroSize;
     haroSize = value;
     sizeNum->setNum(haroSize);
-    if(value<=250)
+    if(value<=170)
         return;
     m_parent->resize(haroSize*1.4,haroSize*1.4);
     QRect windowGeometry=m_parent->geometry();

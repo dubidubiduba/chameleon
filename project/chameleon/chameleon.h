@@ -63,7 +63,6 @@ private:
     dress_win *Dress;
     setwin *Set;
     int size;//体型大小
-    QHBoxLayout* body_part; //用于加载charater的，在initLayout函数中用到
 
 //按钮部分
     QPushButton* btn_exit;

@@ -28,11 +28,10 @@ chameleon::chameleon(QWidget *parent)
     More = new more_win(nullptr,this);
     Dress =  new dress_win;
 
-    _rinai = new riNai(this);  //初始角色
+    _rinai = new riNai(this);  //初始角色  主窗口和角色有关联的只有这里
     Set=new setwin(nullptr,this);
     Set->setSize(size);
     initButton();
-    initLayout();//切换了初始角色记得还要修改这个函数
 }
 //不是继承自widget的对象记得在这里释放
 chameleon::~chameleon()
@@ -171,16 +170,6 @@ void chameleon::reinitButton()
 
 }
 
-void chameleon::initLayout()//初始化布局管理器
-{
-    body_part = new QHBoxLayout;
-    body_part->addWidget(_rinai->body);
-
-    this->setLayout(body_part);
-}
-
-
-
 
 /*----------------------------------------槽函数部分------------------------------------------*/
 
@@ -216,10 +205,13 @@ void chameleon::settingClicked()  //设置大小   设置的方式可以参考ha
 {
     if(Set->isHidden()){
         //移动窗口坐标↓
+        /*
         Set->move(x()+frameGeometry().width()/2-230
                             -Set->frameGeometry().width(),
                         y()+frameGeometry().height()/2
                             -Set->frameGeometry().height()/2);
+        */
+        Set->move(x()-Set->geometry().width()-100,y()+geometry().height()/2-Set->geometry().height()/2);
 
         Set->show();
     }
