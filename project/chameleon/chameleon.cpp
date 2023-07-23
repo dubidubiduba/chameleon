@@ -164,8 +164,8 @@ void chameleon::initLayout()//初始化布局管理器
 void chameleon::dressClicked()  //展示出可选的角色，这里可以使用按钮组QButtonGroup（haro用的是这个），或者一些别的。。
 {
     QSoundEffect *clicksound = new QSoundEffect(this);
-    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
-    clicksound->setVolume(0.5);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click2.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(1);
     clicksound->play();
     if(Dress->isHidden())
     {
@@ -188,7 +188,7 @@ void chameleon::dressClicked()  //展示出可选的角色，这里可以使用�
 void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜单
 {
     QSoundEffect *clicksound = new QSoundEffect(this);
-    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click3.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
     clicksound->setVolume(0.5);
     clicksound->play();
     if(More->isHidden())
