@@ -41,12 +41,12 @@ chameleon::chameleon(QWidget *parent)
 //不是继承自widget的对象记得在这里释放
 chameleon::~chameleon()
 {
-    delete ui;
     delete _rinai;
     delete _haro;
     delete More;
     delete Dress;
     delete Set;
+    delete ui;
 }
 
 /*--------------------------------------初始化部分--------------------------------------------*/
