@@ -6,6 +6,8 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QWheelEvent>
+#include<QPixmap>
+#include <QFileDialog>
 namespace Ui {
 class more_win;
 }
@@ -26,9 +28,12 @@ public:
     void notepadClicked();
     void clockClicked();
     void calendarClicked();
+    void screenshotClicked();
 
     void wheelEvent(QWheelEvent *event);
     void moveButtons(int speed,int flag);
+
+
 
 private:
     Ui::more_win *ui;
@@ -41,10 +46,9 @@ private:
     QPushButton* btn_note;
     QPushButton* btn_translation;
     QPushButton* btn_music;
-    QPushButton* btn_screen;
     QPushButton* btn_skip;
     QPushButton* btn_communion;
-
+    QPushButton* btn_screensh;
     double btnSize ;
 };
 

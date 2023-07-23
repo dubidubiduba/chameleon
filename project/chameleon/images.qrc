@@ -147,5 +147,6 @@
         <file>src/images/haro-images/movement/blink/1.png</file>
         <file>src/images/characters/haro.png</file>
         <file>src/images/characters/rinai.png</file>
+        <file>src/images/icon/screenshot.png</file>
     </qresource>
 </RCC>

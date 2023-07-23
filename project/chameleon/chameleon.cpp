@@ -200,8 +200,16 @@ void chameleon::dressClicked()  //展示出可选的角色，这里可以使用�
 {
     if(Dress->isHidden())
     {
+
+        QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
+        for (QWidget *widget : topLevelWidgets)
+        {
+            if (widget != this)
+                widget->close();
+        }
         Dress->initWindow();
         Dress->show();
+
     }
     else
     {
@@ -214,6 +222,12 @@ void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜�
 {
     if(More->isHidden())
     {
+        QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
+        for (QWidget *widget : topLevelWidgets)
+        {
+            if (widget != this)
+                widget->close();
+        }
         More->initWindow();
         More->show();
     }
@@ -227,7 +241,13 @@ void chameleon::settingClicked()  //设置大小   设置的方式可以参考ha
 //注意，当窗口大小变化时，左侧按钮的位置许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
 {
     if(Set->isHidden()){
-        //移动窗口坐标↓
+        QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
+        for (QWidget *widget : topLevelWidgets)
+        {
+            if (widget != this)
+                widget->close();
+        }
+        //移动窗口坐标
         /*
         Set->move(x()+frameGeometry().width()/2-230
                             -Set->frameGeometry().width(),
@@ -235,7 +255,6 @@ void chameleon::settingClicked()  //设置大小   设置的方式可以参考ha
                             -Set->frameGeometry().height()/2);
         */
         Set->move(x()-Set->geometry().width()-100,y()+geometry().height()/2-Set->geometry().height()/2);
-
         Set->show();
     }
     else

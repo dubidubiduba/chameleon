@@ -77,8 +77,8 @@ void dress_win::setImage(QLabel* image,QPixmap pixmap)
 
 void dress_win::chooseCharacter()
 {
-    qDebug()<<"clicked";
     chameleon* CML = qobject_cast<chameleon*>(m_parent);
+    CML->clearCharacters();
     if(btn_haro->isChecked())
     {
         CML->body_part->addWidget(CML->_haro->bodyImage);
