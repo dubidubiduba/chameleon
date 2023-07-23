@@ -34,7 +34,6 @@ public:
     void initWindow();
     void initButton();
     void Imageset(QLabel* image,QPixmap pixmap);
-    void initLayout();  //初始化布局管理器  这个主要用于加载角色，放在布局管理器中角色会随着窗口的伸缩变换
     void reinitButton();
     //槽函数部分
     void settingClicked();

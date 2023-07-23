@@ -10,8 +10,6 @@ riNai::riNai(QWidget *parent)
 
 riNai::~riNai()
 {
-    delete timer;
-    delete Body;
     delete body;
 }
 void riNai::bodyLoad()

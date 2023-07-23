@@ -11,11 +11,10 @@ haro::haro(QWidget* parent)
 }
 haro::~haro()
 {
-    delete Body;
     delete bodyImage;
-    delete earsImage;
-    delete eyesImage;
-    delete stripeImage;
+    //delete earsImage;  //这里的delete导致了崩溃
+    //delete eyesImage;
+    //delete stripeImage;
 }
 void haro::initBody()
 {
