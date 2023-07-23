@@ -148,5 +148,7 @@
         <file>src/images/characters/haro.png</file>
         <file>src/images/characters/rinai.png</file>
         <file>src/images/icon/screenshot.png</file>
+        <file>src/images/LXH-images/lxh.gif</file>
+        <file>src/images/characters/lxh.png</file>
     </qresource>
 </RCC>

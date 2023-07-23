@@ -35,9 +35,9 @@ private:
     int win_height = 400;
     int character_size = 140;
 
-    QLabel *_haro,*_rinai;
+    QLabel *_haro,*_rinai,*_lxh;
 
-    QPushButton *btn_haro,*btn_rinai;
+    QPushButton *btn_haro,*btn_rinai,*btn_lxh;
     QButtonGroup *ButtonBox;
 
 

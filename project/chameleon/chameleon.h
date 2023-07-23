@@ -17,6 +17,7 @@
 #include "windows/dress_win.h"
 #include"windows/set_win.h"
 #include "characters/rinai.h"
+#include "characters/lxh.h"
 #include "QHBoxLayout"
 
 
@@ -42,11 +43,13 @@ public:
     void testClicked();
 
     void btnstatus();//记录按钮显示状态
+    void winstatus();
     void clearCharacters();  //切换角色时调用，清除角色
 
     //character部分
     haro* _haro;
     riNai* _rinai;
+    LXH* _lxh;
 
     QVBoxLayout* body_part;
 protected://重载三个鼠标事件的函数
@@ -78,6 +81,7 @@ private:
 
 
     int btnSwitch1,btnSwitch2;//按钮显示开关
+    int winSwitch;
 
 //鼠标拖动部分
     QPoint startPos;//记录起始坐标
