@@ -25,9 +25,9 @@ chameleon::chameleon(QWidget *parent)
     //初始化操作
     initWindow();
 
-    More = new more_win(nullptr,this);
-    Dress =  new dress_win(nullptr,this);
-    Set = new setwin(nullptr,this);
+    More = new more_win(this,this);
+    Dress =  new dress_win(this,this);
+    Set = new setwin(this,this);
 
     _rinai = new riNai(this);
     _rinai->body->hide();
@@ -303,6 +303,9 @@ void chameleon::mouseMoveEvent(QMouseEvent *event)//在鼠标移动时会被多�
         QPoint endPos = event->pos();           //鼠标瞬时移动某时刻相对于窗口位置
         QPoint dist = endPos - startPos;        //以鼠标较起始位置的偏移量计算窗口落点的偏移量
         move(x()+dist.x(), y()+dist.y());       //x()和y()是记录窗口相对于父窗口的位置，默认为0，因此此处move()效果为直接将窗口位移到落点处
+        Set->move(x()-Set->width()-100  ,  y()+height()/2-Set->height()/2);
+        More->move(x() - More->width()  ,  y()+height()/2-More->height()/2);
+        Dress->move(x()-Dress->width()  ,  y()+height()/2-Dress->height()/2);
     }
 }
 

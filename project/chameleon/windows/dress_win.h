@@ -25,12 +25,15 @@ public:
     void chooseCharacter();
 
 
+
 private:
     Ui::dress_win *ui;
+
+    QWidget *m_parent;
+
     int win_width = 300;
     int win_height = 400;
     int character_size = 140;
-    QWidget *m_parent;
 
     QLabel *_haro,*_rinai;
 
