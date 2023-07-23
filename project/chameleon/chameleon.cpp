@@ -23,7 +23,7 @@ chameleon::chameleon(QWidget *parent)
     move(coordX,coordY);
 
     //初始化操作
-    initWindow();
+
 
     More = new more_win(nullptr,this);
     Dress =  new dress_win(nullptr,this);
@@ -33,12 +33,13 @@ chameleon::chameleon(QWidget *parent)
     _lxh = new LXH(this);
     _rinai->body->hide();
     _lxh->body->hide();
-
+    initWindow();
     _haro = new haro(this);  //初始角色  主窗口和角色有关联的只有这里
     body_part = new QVBoxLayout(this);
     body_part->addWidget(_haro->bodyImage);
 
     Set->setSize(size);
+
     initButton();
 }
 //不是继承自widget的对象记得在这里释放
@@ -72,8 +73,8 @@ void chameleon::initWindow()//初始化主窗口
     Qt::WindowFlags m_flags = windowFlags();
     setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);
 
-    //winSwitch=0;
-    //winstatus();
+    winSwitch=0;
+    winstatus();
 }
 
 void chameleon::initButton()  //初始化按钮
@@ -289,7 +290,9 @@ void chameleon::btnstatus()//设置显示状态
 
 void chameleon::winstatus()
 {
-    //Dress->setVisible(winSwitch);
+    Dress->setVisible(winSwitch);
+    Set->setVisible(winSwitch);
+    More->setVisible(winSwitch);
 }
 
 void chameleon::mousePressEvent(QMouseEvent *event)//鼠标按压时触发该事件，仅触发一次
@@ -304,11 +307,14 @@ void chameleon::mousePressEvent(QMouseEvent *event)//鼠标按压时触发该事
         if(btnSwitch1)//如果是显示的就置为不显示
         {
             btnSwitch1 = 0;
-           // winSwitch = 0;
+            winSwitch = 0;
+            btnstatus();
+            winstatus();
         }
         else//否则就显示
         {
             btnSwitch1 = 1;
+            btnstatus();
         }
     }
 }
