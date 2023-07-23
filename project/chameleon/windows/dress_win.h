@@ -25,16 +25,19 @@ public:
     void chooseCharacter();
 
 
+
 private:
     Ui::dress_win *ui;
+
+    QWidget *m_parent;
+
     int win_width = 300;
     int win_height = 400;
     int character_size = 140;
-    QWidget *m_parent;
 
-    QLabel *_haro,*_rinai;
+    QLabel *_haro,*_rinai,*_lxh;
 
-    QPushButton *btn_haro,*btn_rinai;
+    QPushButton *btn_haro,*btn_rinai,*btn_lxh;
     QButtonGroup *ButtonBox;
 
 

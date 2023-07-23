@@ -1,5 +1,4 @@
-QT       += core gui
-
+QT       += core gui multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -9,7 +8,9 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    characters/ResizableLabel.cpp \
     characters/haro.cpp \
+    characters/lxh.cpp \
     characters/rinai.cpp \
     main.cpp \
     chameleon.cpp \
@@ -20,7 +21,9 @@ SOURCES += \
 
 HEADERS += \
     chameleon.h \
+    characters/ResizableLabel.h \
     characters/haro.h \
+    characters/lxh.h \
     characters/rinai.h \
     windows/calendar_win.h \
     windows/dress_win.h \
@@ -29,8 +32,6 @@ HEADERS += \
 
 FORMS += \
     chameleon.ui \
-    #dress_win.ui \
-    #more_win.ui \
     windows/calendar_win.ui \
     windows/dress_win.ui \
     windows/more_win.ui \

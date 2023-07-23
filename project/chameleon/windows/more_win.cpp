@@ -105,21 +105,35 @@ void more_win::moveButtons(int speed,int flag)
 */
 void more_win::weatherClicked()
 {
-
+    QSoundEffect *clicksound = new QSoundEffect(this);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(0.5);
+    clicksound->play();
 }
 
 void more_win::notepadClicked()
 {
-
+    QSoundEffect *clicksound = new QSoundEffect(this);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(0.5);
+    clicksound->play();
 }
 
 void more_win::clockClicked()
 {
-
+    QSoundEffect *clicksound = new QSoundEffect(this);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(0.5);
+    clicksound->play();
 }
 
 void more_win::calendarClicked()
 {
+    QSoundEffect *clicksound = new QSoundEffect(this);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(0.5);
+    clicksound->play();
+
     if(Calendar->isHidden())
     {   Calendar->move(x()-Calendar->frameGeometry().width(),y()+frameGeometry().height()/2-Calendar->frameGeometry().height()/2);
         Calendar->show();
@@ -129,12 +143,13 @@ void more_win::calendarClicked()
         Calendar->hide();
     }
 
-
-
-
 }
 void more_win::screenshotClicked()
 {
+    QSoundEffect *clicksound = new QSoundEffect(this);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(0.5);
+    clicksound->play();
     QScreen *screen = QGuiApplication::primaryScreen();
     if (screen)
     {

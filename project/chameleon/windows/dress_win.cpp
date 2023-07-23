@@ -32,12 +32,16 @@ void dress_win::initImages()
 {
     _haro = new QLabel(this);
     _rinai= new QLabel(this);
+    _lxh = new QLabel(this);
 
     setImage(_haro,QPixmap(QString(":/src/images/characters/haro.png")));
     _haro->move(5,5);
 
     setImage(_rinai,QPixmap(QString(":/src/images/characters/rinai.png")));
     _rinai->move(145,5);
+
+    setImage(_lxh,QPixmap(QString(":/src/images/characters/lxh.png")));
+    _lxh->move(5,200);
     /*-------------------------------------------------------------------------*/
     setStyleSheet("QPushButton{border:none;"
                   "background-color:rgb(200,200,200)"
@@ -47,23 +51,29 @@ void dress_win::initImages()
                   "QPushButton:checked{background-color:rgb(100,120,230);}");
     btn_haro = new QPushButton(this);
     btn_rinai = new QPushButton(this);
+    btn_lxh = new QPushButton(this);
 
     btn_haro->setIcon(QIcon(":/src/images/icon/choose.png"));
     btn_rinai->setIcon(QIcon(":/src/images/icon/choose.png"));
+    btn_lxh->setIcon(QIcon(":/src/images/icon/choose.png"));
 
     btn_haro->resize(character_size,character_size/4);
     btn_rinai->resize(character_size,character_size/4);
+    btn_lxh->resize(character_size,character_size/4);
 
     btn_haro->move(5,_haro->y()+character_size);
     btn_rinai->move(145,_rinai->y()+character_size);
+    btn_lxh->move(5,_lxh->y()+character_size);
 
     btn_haro->setCheckable(true);
     btn_rinai->setCheckable(true);
+    btn_lxh->setCheckable(true);
 
     ButtonBox = new QButtonGroup(this);
     ButtonBox->setExclusive(true);
     ButtonBox->addButton(btn_haro);
     ButtonBox->addButton(btn_rinai);
+    ButtonBox->addButton(btn_lxh);
 
     connect(ButtonBox, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), this, &dress_win::chooseCharacter);
 }
@@ -88,6 +98,11 @@ void dress_win::chooseCharacter()
     {
         CML->body_part->addWidget(CML->_rinai->body);
         CML->_rinai->body->show();
+    }
+    else if(btn_lxh->isChecked())
+    {
+        CML->body_part->addWidget(CML->_lxh->body);
+        CML->_lxh->body->show();
     }
 
 }

@@ -148,5 +148,12 @@
         <file>src/images/characters/haro.png</file>
         <file>src/images/characters/rinai.png</file>
         <file>src/images/icon/screenshot.png</file>
+        <file>src/images/LXH-images/lxh.gif</file>
+        <file>src/images/characters/lxh.png</file>
+        <file>src/images/icon/btnclick.wav</file>
+        <file>src/images/icon/clickbtn.mp3</file>
+        <file>src/images/icon/click.wav</file>
+        <file>src/images/icon/click2.wav</file>
+        <file>src/images/icon/click3.wav</file>
     </qresource>
 </RCC>
