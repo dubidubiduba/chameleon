@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QString>
 #include<QSlider>
+
 namespace Ui {
 class setwin;
 }

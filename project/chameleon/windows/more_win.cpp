@@ -1,5 +1,7 @@
 #include "more_win.h"
 #include "ui_more_win.h"
+#include<QScreen>
+
 
 more_win::more_win(QWidget *parent,QWidget* p) :
     QWidget(parent),
@@ -16,6 +18,7 @@ more_win::more_win(QWidget *parent,QWidget* p) :
 more_win::~more_win()
 {
     delete ui;
+    delete Calendar;
 }
 /*这个窗口包括一些扩展功能的按钮，你可能需要自己去找一些图标
   可能需要注意：窗口大小发生变化时这个窗口不要遮住角色了，在设置这个窗口的位置时可能需要与一个父类窗口产生关联。
@@ -37,19 +40,21 @@ void more_win::initBtn()
     btn_weather     =new QPushButton(this);
     btn_note     =new QPushButton(this);
     btn_music     =new QPushButton(this);
+    btn_screensh=new QPushButton(this);
 
     setStyleSheet("QPushButton{border:4px solid black;"
                   "background-color:rgb(173, 216, 230);border-radius: 10px;}"
                   "QPushButton::hover{background-color:rgb(180,255,255);}"
                   "QPushButton:pressed{background-color:rgb(60,170,150);}");
 
+    btn_screensh->setIcon(QIcon(":/src/images/icon/screenshot.png"));
     btn_calendar->setIcon(QIcon(":/src/images/icon/calendar.png"));
     btn_clock->setIcon(QIcon(":/src/images/icon/clock.png"));
     btn_weather->setIcon(QIcon(":/src/images/icon/weather.png"));
     btn_note->setIcon(QIcon(":/src/images/icon/note.png"));
     btn_music->setIcon(QIcon(":/src/images/icon/music.png"));
 
-
+    setButtonsGeo(btn_screensh);
     setButtonsGeo(btn_calendar);
     setButtonsGeo(btn_clock);
     setButtonsGeo(btn_weather);
@@ -73,6 +78,7 @@ void more_win::initConnect()
     connect(btn_clock,&QPushButton::clicked,this,&more_win::clockClicked);
     connect(btn_weather,&QPushButton::clicked,this,&more_win::weatherClicked);
     connect(btn_note,&QPushButton::clicked,this,&more_win::notepadClicked);
+    connect(btn_screensh,&QPushButton::clicked,this,&more_win::screenshotClicked);
 
 }
 
@@ -85,7 +91,12 @@ void more_win::moveButtons(int speed,int flag)
     btn_weather->move(X,btn_weather->y()+temp);
     btn_note->move(X,btn_note->y()+temp);
     btn_music->move(X,btn_music->y()+temp);
+    btn_screensh->move(X,btn_screensh->y()+temp);
 }
+
+
+
+
 
 /*---------------------------------槽函数部分-----------------------------------*/
 /*
@@ -122,6 +133,21 @@ void more_win::calendarClicked()
 
 
 }
+void more_win::screenshotClicked()
+{
+    QScreen *screen = QGuiApplication::primaryScreen();
+    if (screen)
+    {
+        QPixmap screenshot = screen->grabWindow(0);
+
+        QString filePath = QFileDialog::getSaveFileName(this, "Save Screenshot", "", "Images (*.png)");
+        if (!filePath.isEmpty())
+        {
+            screenshot.save(filePath);
+        }
+    }
+}
+
 
 /*--------------------------------------------------------------------*/
 void more_win::wheelEvent(QWheelEvent *event)
@@ -129,11 +155,11 @@ void more_win::wheelEvent(QWheelEvent *event)
     static int speed = 40;//滚动速度
     if(event->delta()<0)
     {
-        moveButtons(speed,-1);
+        if(btn_music->y()+btnSize >= this->height())moveButtons(speed,-1);
     }
     else
     {
-        moveButtons(speed,1);
+        if(btn_screensh->y() != 0) moveButtons(speed,1);
     }
     update();
 }
