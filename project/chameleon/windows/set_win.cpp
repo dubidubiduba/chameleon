@@ -1,6 +1,5 @@
 #include "set_win.h"
 #include "ui_set_win.h"
-#include "chameleon.h"
 
 setwin::setwin(QWidget *parent,QWidget *p) :
     QWidget(parent),

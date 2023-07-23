@@ -15,6 +15,7 @@ SOURCES += \
     chameleon.cpp \
     windows/dress_win.cpp \
     windows/more_win.cpp \
+    windows/note_win.cpp \
     windows/set_win.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     characters/rinai.h \
     windows/dress_win.h \
     windows/more_win.h \
+    windows/note_win.h \
     windows/set_win.h
 
 FORMS += \
@@ -31,6 +33,7 @@ FORMS += \
     #more_win.ui \
     windows/dress_win.ui \
     windows/more_win.ui \
+    windows/note_win.ui \
     windows/set_win.ui
 
 # Default rules for deployment.

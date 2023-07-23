@@ -1,7 +1,6 @@
 #ifndef SET_WIN_H
 #define SET_WIN_H
 
-#include "windows/more_win.h"
 #include <QWidget>
 #include <QBitmap>
 #include <QPainter>
