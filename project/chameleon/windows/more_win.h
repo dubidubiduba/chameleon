@@ -8,6 +8,7 @@
 #include <QWheelEvent>
 #include<QPixmap>
 #include <QFileDialog>
+#include<QSoundEffect>
 namespace Ui {
 class more_win;
 }
@@ -51,6 +52,8 @@ private:
     QPushButton* btn_communion;
     QPushButton* btn_screensh;
     double btnSize ;
+    //音效
+    QSoundEffect *clicksound;
 };
 
 #endif // MORE_WIN_H

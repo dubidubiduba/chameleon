@@ -21,18 +21,17 @@ chameleon::chameleon(QWidget *parent)
     }
     file.close();
     move(coordX,coordY);
-
     //初始化操作
     initWindow();
 
     More = new more_win(nullptr,this);
     Dress =  new dress_win;
-
     _rinai = new riNai(this);  //初始角色
     Set=new setwin(nullptr,this);
     Set->setSize(size);
     initButton();
     initLayout();//切换了初始角色记得还要修改这个函数
+
 }
 //不是继承自widget的对象记得在这里释放
 chameleon::~chameleon()
@@ -108,6 +107,7 @@ void chameleon::initButton()  //初始化按钮
     connect(btn_more,&QPushButton::clicked,this,&chameleon::moreClicked);
     connect(btn_setting,&QPushButton::clicked,this,&chameleon::settingClicked);
     connect(btn_test,&QPushButton::clicked,this,&chameleon::testClicked);
+
     //初始化按钮显示
     btnSwitch1 = 0;
     btnSwitch2 = 0;
@@ -141,35 +141,10 @@ void chameleon::reinitButton()
     int temp3=387-64*3.4+20;
     int temp4=387-64*4.6+20;
 
-//    btn_exit->setFixedSize(64/4,64/4);
-//    btn_dress->setFixedSize(64/4,64/4);
-//    btn_more->setFixedSize(64/4,64/4);
-//    btn_setting->setFixedSize(64/4,64/4);
-
-//    QSize temp(64/4,64/4);
-//    btn_exit->setIconSize(temp);
-//    btn_dress->setIconSize(temp);
-//    btn_more->setIconSize(temp);
-//    btn_setting->setIconSize(temp);
-
-    //    if()
-    //    if(b<0)
-    //    {
-    //        temp1=buttonRect1.y();
-    //        temp2=buttonRect2.y();
-    //        temp3=buttonRect3.y();
-    //        temp4=buttonRect4.y();
-    //    }
-    //    btn_setting->move(buttonRect1.x()+a,temp1+b);
-    //    btn_more->move(buttonRect2.x()+a,temp2+b);
-    //    btn_dress->move(buttonRect3.x()+a,temp3+b);
-    //    btn_exit->move(buttonRect4.x()+a,temp4+b);
     btn_setting->move(0,windowHeight/2+70);
     btn_more->move(0,windowHeight/2+8);
     btn_dress->move(0,windowHeight/2-58);
     btn_exit->move(0,windowHeight/2-120);
-
-
 }
 
 void chameleon::initLayout()//初始化布局管理器
@@ -188,8 +163,13 @@ void chameleon::initLayout()//初始化布局管理器
 /*对于弹出窗口的槽函数，窗口中具体功能的实现请在对应的窗口类中写，这里只负责弹出窗口*/
 void chameleon::dressClicked()  //展示出可选的角色，这里可以使用按钮组QButtonGroup（haro用的是这个），或者一些别的。。
 {
+    QSoundEffect *clicksound = new QSoundEffect(this);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(0.5);
+    clicksound->play();
     if(Dress->isHidden())
     {
+        //关闭其它子窗口
         QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
         for (QWidget *widget : topLevelWidgets)
         {
@@ -207,8 +187,13 @@ void chameleon::dressClicked()  //展示出可选的角色，这里可以使用�
 
 void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜单
 {
+    QSoundEffect *clicksound = new QSoundEffect(this);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(0.5);
+    clicksound->play();
     if(More->isHidden())
     {
+        //关闭其它子窗口
         QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
         for (QWidget *widget : topLevelWidgets)
         {
@@ -227,7 +212,12 @@ void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜�
 void chameleon::settingClicked()  //设置大小   设置的方式可以参考haro，也可以用其他方式，如果需要弹出窗口，请为这个窗口设置一个类，添加到windows目录中
 //注意，当窗口大小变化时，左侧按钮的位置许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
 {
+    QSoundEffect *clicksound = new QSoundEffect(this);
+    clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
+    clicksound->setVolume(0.5);
+    clicksound->play();
     if(Set->isHidden()){
+        //关闭其它子窗口
         QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
         for (QWidget *widget : topLevelWidgets)
         {
@@ -235,10 +225,7 @@ void chameleon::settingClicked()  //设置大小   设置的方式可以参考ha
                 widget->close();
         }
         //移动窗口坐标↓
-//        Set->move(x()+frameGeometry().width()/2-230
-//                            -Set->frameGeometry().width(),
-//                        y()+frameGeometry().height()/2
-//                            -Set->frameGeometry().height()/2);
+
         Set->move(x()-Set->geometry().width()-100,y()+geometry().height()/2-Set->geometry().height()/2);
         Set->show();
     }

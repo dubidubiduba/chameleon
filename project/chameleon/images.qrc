@@ -50,5 +50,8 @@
         <file>src/images/riNai-images/body/body1.png</file>
         <file>src/images/icon/note.png</file>
         <file>src/images/icon/screenshot.png</file>
+        <file>src/images/icon/btnclick.wav</file>
+        <file>src/images/icon/clickbtn.mp3</file>
+        <file>src/images/icon/click.wav</file>
     </qresource>
 </RCC>
