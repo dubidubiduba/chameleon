@@ -7,7 +7,7 @@ chameleon::chameleon(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题   这里为了测试方便，就保留了边框
+    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题
     int coordX,coordY;//桌面坐标
     QFile file("./file/file.dat");                                                    //文件的操作
     file.open(QIODevice::ReadOnly);
@@ -26,19 +26,27 @@ chameleon::chameleon(QWidget *parent)
     initWindow();
 
     More = new more_win(nullptr,this);
-    Dress =  new dress_win;
+    Dress =  new dress_win(nullptr,this);
+    Set = new setwin(nullptr,this);
 
-    _rinai = new riNai(this);  //初始角色
-    Set=new setwin(nullptr,this);
+    _rinai = new riNai(this);
+    _rinai->body->hide();
+    _haro = new haro(this);  //初始角色  主窗口和角色有关联的只有这里
+    body_part = new QVBoxLayout(this);
+    body_part->addWidget(_haro->bodyImage);
+
     Set->setSize(size);
     initButton();
-    initLayout();//切换了初始角色记得还要修改这个函数
 }
 //不是继承自widget的对象记得在这里释放
 chameleon::~chameleon()
 {
     delete ui;
     delete _rinai;
+    delete _haro;
+    delete More;
+    delete Dress;
+    delete Set;
 }
 
 /*--------------------------------------初始化部分--------------------------------------------*/
@@ -63,14 +71,17 @@ void chameleon::initWindow()//初始化主窗口
 
 }
 
-
 void chameleon::initButton()  //初始化按钮
 {
     btn_exit = new QPushButton(this);
     btn_dress = new QPushButton(this);
     btn_more = new QPushButton(this);
     btn_setting = new QPushButton(this);
-    btn_test = new QPushButton("test",this);
+    //
+    btn_exit->setWindowFlags(Qt::WindowStaysOnTopHint);
+    btn_dress->setWindowFlags(Qt::WindowStaysOnTopHint);
+    btn_more->setWindowFlags(Qt::WindowStaysOnTopHint);
+    btn_setting->setWindowFlags(Qt::WindowStaysOnTopHint);
     //加载按钮图标
     btn_exit->setIcon(QIcon(":/src/images/icon/close.png"));
     btn_dress->setIcon(QIcon(":/src/images/icon/dress.png"));
@@ -107,7 +118,6 @@ void chameleon::initButton()  //初始化按钮
     connect(btn_dress,&QPushButton::clicked,this,&chameleon::dressClicked);
     connect(btn_more,&QPushButton::clicked,this,&chameleon::moreClicked);
     connect(btn_setting,&QPushButton::clicked,this,&chameleon::settingClicked);
-    connect(btn_test,&QPushButton::clicked,this,&chameleon::testClicked);
     //初始化按钮显示
     btnSwitch1 = 0;
     btnSwitch2 = 0;
@@ -171,16 +181,20 @@ void chameleon::reinitButton()
 
 
 }
-
-void chameleon::initLayout()//初始化布局管理器
+void chameleon::clearCharacters()
 {
-    body_part = new QHBoxLayout;
-    body_part->addWidget(_rinai->body);
+    if (_haro && body_part->indexOf(_haro->bodyImage) != -1) {
+        // _haro 在布局中
+        body_part->removeWidget(_haro->bodyImage);
+        _haro->bodyImage->hide();
+    }
 
-    this->setLayout(body_part);
+    if (_rinai && body_part->indexOf(_rinai->body) != -1) {
+        // _rinai 在布局中
+        body_part->removeWidget(_rinai->body);
+        _rinai->body->hide();
+    }
 }
-
-
 
 
 /*----------------------------------------槽函数部分------------------------------------------*/
@@ -190,7 +204,16 @@ void chameleon::dressClicked()  //展示出可选的角色，这里可以使用�
 {
     if(Dress->isHidden())
     {
+
+        QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
+        for (QWidget *widget : topLevelWidgets)
+        {
+            if (widget != this)
+                widget->close();
+        }
+        Dress->initWindow();
         Dress->show();
+
     }
     else
     {
@@ -203,6 +226,12 @@ void chameleon::moreClicked()  //弹出一个包含了更多功能按钮的菜�
 {
     if(More->isHidden())
     {
+        QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
+        for (QWidget *widget : topLevelWidgets)
+        {
+            if (widget != this)
+                widget->close();
+        }
         More->initWindow();
         More->show();
     }
@@ -216,20 +245,24 @@ void chameleon::settingClicked()  //设置大小   设置的方式可以参考ha
 //注意，当窗口大小变化时，左侧按钮的位置许不太美观，也许需要你花一些精力想办法解决，可以修改initButton函数的内容
 {
     if(Set->isHidden()){
-        //移动窗口坐标↓
+        QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
+        for (QWidget *widget : topLevelWidgets)
+        {
+            if (widget != this)
+                widget->close();
+        }
+        //移动窗口坐标
+        /*
         Set->move(x()+frameGeometry().width()/2-230
                             -Set->frameGeometry().width(),
                         y()+frameGeometry().height()/2
                             -Set->frameGeometry().height()/2);
+        */
+        Set->move(x()-Set->geometry().width()-100,y()+geometry().height()/2-Set->geometry().height()/2);
         Set->show();
     }
     else
         Set->hide();
-
-}
-
-void chameleon::testClicked()  //提供了一个共用的测试按钮，可以用来测试一些小功能 ，合并代码时请恢复
-{
 
 }
 

@@ -17,7 +17,7 @@ setwin::setwin(QWidget *parent,QWidget *p) :
     setMask(bmp);
     setWindowOpacity(0.95);//设置透明度
     setStyleSheet("background-color:white;");
-    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);//去掉窗口标题
+    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);
     Qt::WindowFlags m_flags = windowFlags();//保持窗口置顶1
     setWindowFlags(m_flags|Qt::WindowStaysOnTopHint);//保持窗口置顶2
 

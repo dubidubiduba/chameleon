@@ -3,7 +3,6 @@
 riNai::riNai(QWidget *parent)
 {
     m_parent = parent;
-    body = new QLabel(m_parent);
     bodyLoad();
     initBody();
     initDress();
@@ -12,6 +11,8 @@ riNai::riNai(QWidget *parent)
 riNai::~riNai()
 {
     delete timer;
+    delete Body;
+    delete body;
 }
 void riNai::bodyLoad()
 {
@@ -29,8 +30,10 @@ void riNai::bodyLoad()
 }*/
 void riNai::initBody()  //gpt写的，产生了奇妙的化学反应
 {
+    //Body = new QVBoxLayout(m_parent);
     body = new QLabel(m_parent);
-    timer = new QTimer;
+    //Body->addWidget(body);
+    timer = new QTimer(this);
     timer->start(250);
     connect(timer, &QTimer::timeout, this, &riNai::movement);
 

@@ -6,6 +6,7 @@
 #include <vector>
 #include <QTimer>
 #include <QDebug>
+#include <QVBoxLayout>
 
 class riNai : public QObject
 {
@@ -19,8 +20,10 @@ public:
     void initDress();
     void Imageset(QLabel* image,QPixmap pixmap);
 
+    QVBoxLayout* Body;
     QLabel* body;
 private:
+
     QWidget* m_parent;
     std::vector<QPixmap> Bodys;
     QTimer* timer;
