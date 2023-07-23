@@ -12,6 +12,9 @@
 #include <QButtonGroup>
 #include <QMouseEvent>
 #include <QFile>
+#include<QSound>
+#include <QSoundEffect>
+#include <QMediaPlayer>
 #include "characters/haro.h"
 #include "windows/more_win.h"
 #include "windows/dress_win.h"
@@ -79,6 +82,8 @@ private:
     QPushButton* btn_more;
     QPushButton* btn_setting;
 
+//音效
+    QSoundEffect  *clicksound;
 
     int btnSwitch1,btnSwitch2;//按钮显示开关
     int winSwitch;
