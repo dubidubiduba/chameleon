@@ -1,16 +1,106 @@
 #include "dress_win.h"
 #include "ui_dress_win.h"
+#include "chameleon.h"
 
-dress_win::dress_win(QWidget *parent) :
+dress_win::dress_win(QWidget *parent,QWidget* p) :
     QWidget(parent),
     ui(new Ui::dress_win)
 {
     ui->setupUi(this);
+    m_parent = p;
+    initWindow();
+    initImages();
 }
 
 dress_win::~dress_win()
 {
     delete ui;
+}
+
+void dress_win::initWindow()
+{
+    int X = m_parent->geometry().x() - win_width;
+    int Y = m_parent->geometry().y()+m_parent->geometry().height()/2-win_height/2;
+    this->setGeometry(X,Y,win_width,win_height);
+    setWindowOpacity(0.9);//设置透明度
+    setWindowFlags(Qt::FramelessWindowHint);
+    setAttribute(Qt::WA_TranslucentBackground);
+    setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);
+}
+
+void dress_win::initImages()
+{
+    _haro = new QLabel(this);
+    _rinai= new QLabel(this);
+
+    setImage(_haro,QPixmap(QString(":/src/images/characters/haro.png")));
+    _haro->move(5,5);
+
+    setImage(_rinai,QPixmap(QString(":/src/images/characters/rinai.png")));
+    _rinai->move(145,5);
+    /*-------------------------------------------------------------------------*/
+    setStyleSheet("QPushButton{border:none;"
+                  "background-color:rgb(200,200,200)"
+                  ";border-radius: 15px;"
+                  "border-style:outset;}"
+                  "QPushButton::hover{background-color:rgb(170,200,255);}"
+                  "QPushButton:checked{background-color:rgb(100,120,230);}");
+    btn_haro = new QPushButton(this);
+    btn_rinai = new QPushButton(this);
+
+    btn_haro->setIcon(QIcon(":/src/images/icon/choose.png"));
+    btn_rinai->setIcon(QIcon(":/src/images/icon/choose.png"));
+
+    btn_haro->resize(character_size,character_size/4);
+    btn_rinai->resize(character_size,character_size/4);
+
+    btn_haro->move(5,_haro->y()+character_size);
+    btn_rinai->move(145,_rinai->y()+character_size);
+
+    btn_haro->setCheckable(true);
+    btn_rinai->setCheckable(true);
+
+    ButtonBox = new QButtonGroup(this);
+    ButtonBox->setExclusive(true);
+    ButtonBox->addButton(btn_haro);
+    ButtonBox->addButton(btn_rinai);
+
+    connect(ButtonBox, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), this, &dress_win::chooseCharacter);
+}
+void dress_win::setImage(QLabel* image,QPixmap pixmap)
+{
+    image->setPixmap(pixmap);
+    image->setPixmap(pixmap.scaled(character_size,character_size));//使用scaled修改图片大小，能避免图片因缩放模糊
+    image->setScaledContents(true);  //使图片完全填充
+    image->resize(character_size,character_size);
+}
+
+void dress_win::chooseCharacter()
+{
+    qDebug()<<"clicked";
+    chameleon* CML = qobject_cast<chameleon*>(m_parent);
+    if(btn_haro->isChecked())
+    {
+        CML->body_part->addWidget(CML->_haro->bodyImage);
+        CML->_haro->bodyImage->show();
+    }
+    else if(btn_rinai->isChecked())
+    {
+        CML->body_part->addWidget(CML->_rinai->body);
+        CML->_rinai->body->show();
+    }
+
+}
+
+
+
+void dress_win::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(Qt::white);
+    painter.drawRoundedRect(rect(), 10, 10);
 }
 
 /*

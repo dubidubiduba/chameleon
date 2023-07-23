@@ -25,10 +25,11 @@ public:
     void eyesMovement();
     void faceMovement();
     void moveStart();
-
-    void mousePressEvent(QMouseEvent *event);
+    void earsMovement();
+    void initTimer();
 
     QVBoxLayout* Body;
+    QLabel *bodyImage ,*earsImage,*eyesImage,*stripeImage;//各部件对应标签
 
     static int m_index;  //
 
@@ -36,14 +37,14 @@ private:
 
 
     QWidget* m_parent;
-    QLabel *bodyImage ,*earsImage,*eyesImage,*stripeImage;//各部件对应标签
+
     QVBoxLayout* ears_part;
     QVBoxLayout* eyes_part;
     QVBoxLayout* stripe_part;
 
     std::vector<QPixmap> body,ears1,ears2;//各部件对应图片容器
 
-    std::vector<QPixmap> movement;//表情图片容器
+    std::vector<QPixmap> movement,Ears;//表情图片容器
 
     std::vector<QPixmap> spMovement;//特殊动作图片容器
 
@@ -51,7 +52,7 @@ private:
 
     QPixmap eyes,stripe;//眼睛和眼部遮罩
 
-    QTimer *timer1,*timer2;//定时器
+    QTimer *timer1,*timer2,*earTimer;//定时器
     int interval_time; //
 
     int face; //表情序号

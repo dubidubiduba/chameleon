@@ -7,16 +7,15 @@ haro::haro(QWidget* parent)
     eyesMovementLoad();
     initBody();
     qsrand(QTime::currentTime().msec());
-    timer1 = new QTimer;
-    timer2 = new QTimer;
-    interval_time = 10000;
-    timer2->start(interval_time);
-    connect(timer1,&QTimer::timeout,this,&haro::faceMovement);
-    connect(timer2,&QTimer::timeout,this,&haro::moveStart);
+    initTimer();
 }
 haro::~haro()
 {
+    delete Body;
     delete bodyImage;
+    delete earsImage;
+    delete eyesImage;
+    delete stripeImage;
 }
 void haro::initBody()
 {
@@ -25,18 +24,18 @@ void haro::initBody()
     eyesImage = new QLabel(m_parent);
     stripeImage = new QLabel(m_parent);
 
-    Body = new QVBoxLayout(m_parent);
+    //Body = new QVBoxLayout(m_parent);
     ears_part = new QVBoxLayout(bodyImage);
     eyes_part = new QVBoxLayout(earsImage);
     stripe_part = new QVBoxLayout(eyesImage);
 
-    Body->addWidget(bodyImage);
+    //Body->addWidget(bodyImage);
     ears_part->addWidget(earsImage);
     eyes_part->addWidget(eyesImage);
     stripe_part->addWidget(stripeImage);
 
-    Imageset(bodyImage ,body[0]);
-    Imageset(earsImage,ears1[0]);
+    Imageset(bodyImage ,body[1]);
+    Imageset(earsImage,ears1[1]);
     Imageset(eyesImage,eyes);
     Imageset(stripeImage,stripe);
 }
@@ -80,9 +79,7 @@ void haro::imageLoad()
     ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/angel_ears2.png")));
 
     eyes.load(":/src/images/haro-images/appearance/eyes/def_eyes.png");
-    stripe.load(":/src/images/haro-images/appearance/stripe.png");
-}
-
+    stripe.load(":/src/images/haro-images/appearance/stripe.png");}
 void haro::eyesMovementLoad()  //将每一帧的图片存入QPixmap数组
 {
     faceNum.push_back(9);//帧数-例：9代表9帧
@@ -106,28 +103,37 @@ void haro::eyesMovementLoad()  //将每一帧的图片存入QPixmap数组
     for(int i = 1; i<=faceNum[8]; i++)//表情4-单眨眼
         movement.push_back(QPixmap(QString(":/src/images/haro-images/movement/wink/%1.png").arg(i)));
 
+    Ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/blue_ears1.png")));
+    Ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/blue_ears2.png")));
+
     face = -1;//表情序号初始化为-1，不生效
     faceSum = 5;//表情数量
 }
-void haro::mousePressEvent(QMouseEvent *event)
-{
-    if(event->button() == Qt::LeftButton)
-    {
-        qDebug() << "clicked";
-        face = random()%faceSum;
-        face_index = faceNum[face*2];
-        face_cnt = faceNum[face*2+1];
-        //m_index = 0;
-        //timer->start(250);
-    }
 
+void haro::initTimer()
+{
+    timer1 = new QTimer(this);
+    timer2 = new QTimer(this);
+    earTimer = new QTimer(this);
+    interval_time = 10000;
+    timer2->start(interval_time);
+    earTimer->start(1000);
+    connect(timer1,&QTimer::timeout,this,&haro::faceMovement);
+    connect(timer2,&QTimer::timeout,this,&haro::moveStart);
+    connect(earTimer,&QTimer::timeout,this,&haro::earsMovement);
+}
+void haro::earsMovement()
+{
+    static int flag=0;
+    Imageset(earsImage,Ears[flag]);
+    flag = (++flag)%2;
 }
 void haro::moveStart()
 {
     face = qrand()%faceSum;
     face_index = faceNum[face*2+1];
     face_cnt = faceNum[face*2];
-    timer1->start(250);
+    timer1->start(150);
 }
 void haro::faceMovement()
 {
@@ -139,6 +145,7 @@ void haro::faceMovement()
         interval_time = 10000 + qrand()%5000;
         timer2->start(interval_time);          //
         timer1->stop();
+        return;
     }
     Imageset(eyesImage,movement[face_index+idx]);
     idx++;

@@ -17,6 +17,7 @@
 #include "windows/dress_win.h"
 #include"windows/set_win.h"
 #include "characters/rinai.h"
+#include "QHBoxLayout"
 
 
 QT_BEGIN_NAMESPACE
@@ -42,7 +43,13 @@ public:
     void testClicked();
 
     void btnstatus();//记录按钮显示状态
+    void clearCharacters();
 
+    //character部分
+    haro* _haro;
+    riNai* _rinai;
+
+    QVBoxLayout* body_part;
 protected://重载三个鼠标事件的函数
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -55,9 +62,7 @@ private:
     int win_height=387;   //主窗口的高
     int ScreenWidth;  //显示器屏幕的宽度
     int ScreenHeight;   //显示器屏幕的高度
-//character部分
-    haro* _haro;
-    riNai* _rinai;
+
 
 //窗口部分
     more_win *More;

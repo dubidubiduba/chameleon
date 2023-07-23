@@ -26,9 +26,14 @@ chameleon::chameleon(QWidget *parent)
     initWindow();
 
     More = new more_win(nullptr,this);
-    Dress =  new dress_win;
+    Dress =  new dress_win(nullptr,this);
 
+    _rinai = new riNai(this);
+    _rinai->body->hide();
     _haro = new haro(this);  //初始角色  主窗口和角色有关联的只有这里
+    body_part = new QVBoxLayout(this);
+    body_part->addWidget(_haro->bodyImage);
+
     Set=new setwin(nullptr,this);
     Set->setSize(size);
     initButton();
@@ -62,13 +67,17 @@ void chameleon::initWindow()//初始化主窗口
 
 }
 
-
 void chameleon::initButton()  //初始化按钮
 {
     btn_exit = new QPushButton(this);
     btn_dress = new QPushButton(this);
     btn_more = new QPushButton(this);
     btn_setting = new QPushButton(this);
+    //
+    btn_exit->setWindowFlags(Qt::WindowStaysOnTopHint);
+    btn_dress->setWindowFlags(Qt::WindowStaysOnTopHint);
+    btn_more->setWindowFlags(Qt::WindowStaysOnTopHint);
+    btn_setting->setWindowFlags(Qt::WindowStaysOnTopHint);
     //加载按钮图标
     btn_exit->setIcon(QIcon(":/src/images/icon/close.png"));
     btn_dress->setIcon(QIcon(":/src/images/icon/dress.png"));
@@ -168,6 +177,20 @@ void chameleon::reinitButton()
 
 
 }
+void chameleon::clearCharacters()
+{
+    if (_haro && body_part->indexOf(_haro->bodyImage) != -1) {
+        // _haro 在布局中
+        body_part->removeWidget(_haro->bodyImage);
+        _haro->bodyImage->hide();
+    }
+
+    if (_rinai && body_part->indexOf(_rinai->body) != -1) {
+        // _rinai 在布局中
+        body_part->removeWidget(_rinai->body);
+        _rinai->body->hide();
+    }
+}
 
 
 /*----------------------------------------槽函数部分------------------------------------------*/
@@ -177,6 +200,7 @@ void chameleon::dressClicked()  //展示出可选的角色，这里可以使用�
 {
     if(Dress->isHidden())
     {
+        Dress->initWindow();
         Dress->show();
     }
     else
