@@ -20,6 +20,8 @@ private:
     Ui::calendar_win *ui;
     QWidget* c_parent;
 
+protected slots:
+    void DateChange();
 };
 
 #endif // CALENDAR_WIN_H
