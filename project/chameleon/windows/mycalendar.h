@@ -1,10 +1,10 @@
 #ifndef MYCALENDAR_H
 #define MYCALENDAR_H
 
-#include <QWidget>
 #include <QCalendarWidget>
 #include "utility.h"
 #include "filesdialog.h"
+
 class MyCalendar : public QCalendarWidget
 {
     Q_OBJECT
@@ -30,4 +30,5 @@ public slots:
     void showFiles(QDate date);
 
 };
+
 #endif // MYCALENDAR_H

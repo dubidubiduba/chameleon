@@ -13,7 +13,7 @@ FilesDialog::FilesDialog(QVector<QUrl>* fileslist_, bool drag, QWidget *parent) 
     if(fileslist != nullptr)
     {
         for(QVector<QUrl>::const_iterator it = fileslist->begin();
-            it != fileslist->end(); ++it)
+             it != fileslist->end(); ++it)
         {
             ui->listWidget->addItem(it->fileName());
         }

@@ -1,8 +1,7 @@
-#include "windows/mycalendar.h"
+#include "mycalendar.h"
 #include <QDir>
-#include<QWidget>
-MyCalendar::MyCalendar(QWidget *parent)
-    : QCalendarWidget::QCalendarWidget(parent)
+MyCalendar::MyCalendar(QWidget *parent):
+    QCalendarWidget::QCalendarWidget(parent)
 {
     connect(this, SIGNAL(currentPageChanged(int,int)),
             this, SLOT(resetDatepos()));
@@ -18,6 +17,7 @@ MyCalendar::MyCalendar(QWidget *parent)
 
     setAcceptDrops(true);
 }
+
 void MyCalendar::dragEnterEvent(QDragEnterEvent *event)
 {
     //如果为文件，则支持拖放

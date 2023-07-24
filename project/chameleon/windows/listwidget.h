@@ -1,5 +1,5 @@
-#ifndef LISHWIDGET_H
-#define LISHWIDGET_H
+#ifndef LISTWIDGET_H
+#define LISTWIDGET_H
 
 #include "utility.h"
 #include <QObject>
@@ -7,8 +7,9 @@
 
 class ListWidget : public QListWidget
 {
+
 public:
-    explicit ListWidget(QWidget *parent = 0);
+    explicit ListWidget(QWidget *parent = nullptr);
     void setFileslist(QVector<QUrl> *fileslist_);
     bool dragEnable;
 
@@ -19,4 +20,4 @@ private:
     QVector<QUrl>* fileslist;
 };
 
-#endif // LISHWIDGET_H
+#endif // LISTWIDGET_H

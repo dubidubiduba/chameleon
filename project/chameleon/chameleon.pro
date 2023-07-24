@@ -22,7 +22,7 @@ SOURCES += \
     windows/haro_dress.cpp \
     windows/listwidget.cpp \
     windows/more_win.cpp \
-windows/mycalendar.cpp \
+    windows/mycalendar.cpp \
  windows/notewindow.cpp \
     windows/schedule.cpp \
     windows/scheduledialog.cpp \
@@ -42,8 +42,8 @@ HEADERS += \
     windows/haro_dress.h \
     windows/listwidget.h \
     windows/more_win.h \
+    windows/mycalendar.h \
 windows/notewindow.h \
-windows/mycalendar.h \
     windows/schedule.h \
     windows/scheduledialog.h \
     windows/schedulemanager.h \

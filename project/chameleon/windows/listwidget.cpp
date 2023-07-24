@@ -1,7 +1,7 @@
 #include "listwidget.h"
 
 ListWidget::ListWidget
-(QWidget* parent):
+    (QWidget* parent):
     QListWidget(parent)
 {
 
@@ -24,11 +24,11 @@ void ListWidget::mousePressEvent(QMouseEvent *event)
     int index = currentRow();
     QUrl url = (*fileslist)[index];
     qDebug()<<url.toString();
-//    QString path = url.path();
-//    qDebug()<<"path = "<<path;
-//    path = "file:///" + path;
-//    qDebug()<<"path="<<path;
-//    url.setUrl(path);
+    //    QString path = url.path();
+    //    qDebug()<<"path = "<<path;
+    //    path = "file:///" + path;
+    //    qDebug()<<"path="<<path;
+    //    url.setUrl(path);
 
     QMimeData* QD = new QMimeData;
     QList<QUrl> urls;
