@@ -10,6 +10,7 @@
 #include<QPixmap>
 #include <QFileDialog>
 #include<QSoundEffect>
+#include "note_win.h"
 namespace Ui {
 class more_win;
 }
@@ -38,6 +39,7 @@ public:
     calendar_win *Calendar;
 
 
+    note_win* notepad;
 
 private:
     Ui::more_win *ui;

@@ -1,7 +1,7 @@
 #include "more_win.h"
 #include "ui_more_win.h"
 #include<QScreen>
-
+#include "note_win.h"
 
 more_win::more_win(QWidget *parent,QWidget* p) :
     QWidget(parent),
@@ -12,13 +12,18 @@ more_win::more_win(QWidget *parent,QWidget* p) :
     initWindow();
     initBtn();
     initConnect();
+
     Calendar=new calendar_win(nullptr,this);
+    notepad = new note_win(nullptr, this);
+
 }
 
 more_win::~more_win()
 {
     delete ui;
     delete Calendar;
+    delete notepad;
+
 }
 /*这个窗口包括一些扩展功能的按钮，你可能需要自己去找一些图标
   可能需要注意：窗口大小发生变化时这个窗口不要遮住角色了，在设置这个窗口的位置时可能需要与一个父类窗口产生关联。
@@ -117,6 +122,14 @@ void more_win::notepadClicked()
     clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
     clicksound->setVolume(0.5);
     clicksound->play();
+    if(notepad->isHidden())
+    {   notepad->move(x()-notepad->frameGeometry().width(),y()+frameGeometry().height()/2-notepad->frameGeometry().height()/2);
+        notepad->show();
+    }
+    else
+    {
+        notepad->hide();
+    }
 }
 
 void more_win::clockClicked()
