@@ -13,7 +13,7 @@ more_win::more_win(QWidget *parent,QWidget* p) :
     initBtn();
     initConnect();
 
-    Calendar=new calendar_win(nullptr,this);
+    Calendar=new calendar_win(nullptr);
     notepad = new note_win(nullptr, this);
 
 }
