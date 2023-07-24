@@ -32,10 +32,10 @@
   <widget class="ListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>286</width>
-     <height>214</height>
+     <x>30</x>
+     <y>20</y>
+     <width>256</width>
+     <height>192</height>
     </rect>
    </property>
   </widget>
@@ -44,7 +44,7 @@
   <customwidget>
    <class>ListWidget</class>
    <extends>QListWidget</extends>
-   <header>listwidget.h</header>
+   <header>windows/listwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
