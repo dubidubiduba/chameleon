@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QWheelEvent>
-#include "note_win.h"
+#include "noteWindow.h"
 namespace Ui {
 class more_win;
 }
@@ -31,7 +31,7 @@ public:
     void wheelEvent(QWheelEvent *event);
     void moveButtons(int speed,int flag);
 public:
-    note_win* notepad;
+    noteWindow* notepad;
 
 private:
     Ui::more_win *ui;

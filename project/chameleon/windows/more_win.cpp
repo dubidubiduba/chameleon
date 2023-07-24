@@ -11,7 +11,7 @@ more_win::more_win(QWidget *parent,QWidget* p) :
     initWindow();
     initBtn();
     initConnect();
-    notepad = new note_win(nullptr, this);
+    notepad = new noteWindow(this);
 }
 
 more_win::~more_win()
