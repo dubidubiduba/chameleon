@@ -12,13 +12,6 @@ characters和windows都有对应的目录，里面是对应类的源码
 	  
 	###每个类的功能尽量在对应类自己的代码里实现，主窗口只负责调度###
 	
-添加gif角色的方式：
-	目前的角色中lxh、ncs都是gif，文件格式可以参考他们
-	主要与三部分有关联：chameleon.h/cpp  dress_win.h/cpp 以及角色自身
-		chameleon.cpp: 构造函数/析构函数 、initCharacters()、clearCharacters()
-		dress_win.cpp: 参考其他角色即可
-	
-在”更多“窗口"more_win"中添加功能按钮的方式参见more_win.cpp的注释
 -------------------开发阶段一
 现在chameleon中主要有四个待完成的部分：
 	1、切换角色 void chameleon::dressClicked()   --Atrium(门)  //未完成
