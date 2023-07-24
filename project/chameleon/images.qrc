@@ -155,5 +155,7 @@
         <file>src/images/icon/click.wav</file>
         <file>src/images/icon/click2.wav</file>
         <file>src/images/icon/click3.wav</file>
+        <file>src/images/ncs-images/ncs.gif</file>
+        <file>src/images/characters/ncs.png</file>
     </qresource>
 </RCC>

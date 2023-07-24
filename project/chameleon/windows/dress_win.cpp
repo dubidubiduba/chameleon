@@ -33,6 +33,7 @@ void dress_win::initImages()
     _haro = new QLabel(this);
     _rinai= new QLabel(this);
     _lxh = new QLabel(this);
+    _ncs = new QLabel(this);
 
     setImage(_haro,QPixmap(QString(":/src/images/characters/haro.png")));
     _haro->move(5,5);
@@ -42,6 +43,9 @@ void dress_win::initImages()
 
     setImage(_lxh,QPixmap(QString(":/src/images/characters/lxh.png")));
     _lxh->move(5,200);
+
+    setImage(_ncs,QPixmap(QString(":/src/images/characters/ncs.png")));
+    _ncs->move(145,200);
     /*-------------------------------------------------------------------------*/
     setStyleSheet("QPushButton{border:none;"
                   "background-color:rgb(200,200,200)"
@@ -52,28 +56,34 @@ void dress_win::initImages()
     btn_haro = new QPushButton(this);
     btn_rinai = new QPushButton(this);
     btn_lxh = new QPushButton(this);
+    btn_ncs = new QPushButton(this);
 
     btn_haro->setIcon(QIcon(":/src/images/icon/choose.png"));
     btn_rinai->setIcon(QIcon(":/src/images/icon/choose.png"));
     btn_lxh->setIcon(QIcon(":/src/images/icon/choose.png"));
+    btn_ncs->setIcon(QIcon(":/src/images/icon/choose.png"));
 
     btn_haro->resize(character_size,character_size/4);
     btn_rinai->resize(character_size,character_size/4);
     btn_lxh->resize(character_size,character_size/4);
+    btn_ncs->resize(character_size,character_size/4);
 
     btn_haro->move(5,_haro->y()+character_size);
     btn_rinai->move(145,_rinai->y()+character_size);
     btn_lxh->move(5,_lxh->y()+character_size);
+    btn_ncs->move(145,_ncs->y()+character_size);
 
     btn_haro->setCheckable(true);
     btn_rinai->setCheckable(true);
     btn_lxh->setCheckable(true);
+    btn_ncs->setCheckable(true);
 
     ButtonBox = new QButtonGroup(this);
     ButtonBox->setExclusive(true);
     ButtonBox->addButton(btn_haro);
     ButtonBox->addButton(btn_rinai);
     ButtonBox->addButton(btn_lxh);
+    ButtonBox->addButton(btn_ncs);
 
     connect(ButtonBox, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), this, &dress_win::chooseCharacter);
 }
@@ -103,6 +113,11 @@ void dress_win::chooseCharacter()
     {
         CML->body_part->addWidget(CML->_lxh->body);
         CML->_lxh->body->show();
+    }
+    else if(btn_ncs->isChecked())
+    {
+        CML->body_part->addWidget(CML->_ncs->body);
+        CML->_ncs->body->show();
     }
 
 }

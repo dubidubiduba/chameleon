@@ -36,8 +36,10 @@ private:
     int character_size = 140;
 
     QLabel *_haro,*_rinai,*_lxh;
+    QLabel *_ncs;
 
     QPushButton *btn_haro,*btn_rinai,*btn_lxh;
+    QPushButton *btn_ncs;
     QButtonGroup *ButtonBox;
 
 

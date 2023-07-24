@@ -11,6 +11,7 @@ SOURCES += \
     characters/ResizableLabel.cpp \
     characters/haro.cpp \
     characters/lxh.cpp \
+    characters/ncs.cpp \
     characters/rinai.cpp \
     main.cpp \
     chameleon.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     characters/ResizableLabel.h \
     characters/haro.h \
     characters/lxh.h \
+    characters/ncs.h \
     characters/rinai.h \
     windows/calendar_win.h \
     windows/dress_win.h \

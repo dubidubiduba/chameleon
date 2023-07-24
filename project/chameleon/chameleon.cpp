@@ -23,16 +23,9 @@ chameleon::chameleon(QWidget *parent)
     move(coordX,coordY);
     //初始化操作
 
-
-    More = new more_win(nullptr,this);
-    Dress =  new dress_win(nullptr,this);
-    Set = new setwin(nullptr,this);
-
-    _rinai = new riNai(this);
-    _lxh = new LXH(this);
-    _rinai->body->hide();
-    _lxh->body->hide();
+    initCharacters();
     initWindow();
+
     _haro = new haro(this);  //初始角色  主窗口和角色有关联的只有这里
     body_part = new QVBoxLayout(this);
     body_part->addWidget(_haro->bodyImage);
@@ -46,6 +39,9 @@ chameleon::~chameleon()
 {
     delete _rinai;
     delete _haro;
+    delete _lxh;
+    delete _ncs;
+
     delete More;
     delete Dress;
     delete Set;
@@ -55,6 +51,9 @@ chameleon::~chameleon()
 /*--------------------------------------初始化部分--------------------------------------------*/
 void chameleon::initWindow()//初始化主窗口
 {
+    More = new more_win(nullptr,this);
+    Dress =  new dress_win(nullptr,this);
+    Set = new setwin(nullptr,this);
     //获取屏幕的宽和高
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
@@ -75,7 +74,15 @@ void chameleon::initWindow()//初始化主窗口
     winSwitch=0;
     winstatus();
 }
-
+void chameleon::initCharacters()
+{
+    _rinai = new riNai(this);
+    _lxh = new LXH(this);
+    _ncs = new NCS(this);
+    _rinai->body->hide();
+    _lxh->body->hide();
+    _ncs->body->hide();
+}
 void chameleon::initButton()  //初始化按钮
 {
     btn_exit = new QPushButton(this);
@@ -169,16 +176,22 @@ void chameleon::clearCharacters()
         _haro->bodyImage->hide();
     }
 
-    if (_rinai && body_part->indexOf(_rinai->body) != -1) {
+    else if (_rinai && body_part->indexOf(_rinai->body) != -1) {
         // _rinai 在布局中
         body_part->removeWidget(_rinai->body);
         _rinai->body->hide();
     }
 
-    if (_lxh && body_part->indexOf(_lxh->body) != -1) {
-        // _rinai 在布局中
+    else if (_lxh && body_part->indexOf(_lxh->body) != -1) {
+        // _lxh 在布局中
         body_part->removeWidget(_lxh->body);
         _lxh->body->hide();
+    }
+
+    else if (_ncs && body_part->indexOf(_ncs->body) != -1) {
+        // _ncs 在布局中
+        body_part->removeWidget(_ncs->body);
+        _ncs->body->hide();
     }
 }
 

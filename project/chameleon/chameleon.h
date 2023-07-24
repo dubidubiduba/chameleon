@@ -21,6 +21,7 @@
 #include"windows/set_win.h"
 #include "characters/rinai.h"
 #include "characters/lxh.h"
+#include "characters/ncs.h"
 #include "QHBoxLayout"
 
 
@@ -47,12 +48,14 @@ public:
 
     void btnstatus();//记录按钮显示状态
     void winstatus();
+    void initCharacters();
     void clearCharacters();  //切换角色时调用，清除角色
 
     //character部分
     haro* _haro;
     riNai* _rinai;
     LXH* _lxh;
+    NCS* _ncs;
 
     QVBoxLayout* body_part;
 protected://重载三个鼠标事件的函数
