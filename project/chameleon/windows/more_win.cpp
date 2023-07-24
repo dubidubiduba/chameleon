@@ -99,8 +99,11 @@ void more_win::moveButtons(int speed,int flag)
     btn_screensh->move(X,btn_screensh->y()+temp);
 }
 
-
-
+void more_win::winstatus()
+{
+    Calendar->setVisible(winSwitch);
+    notepad->setVisible(winSwitch);
+}
 
 
 /*---------------------------------槽函数部分-----------------------------------*/
@@ -110,6 +113,7 @@ void more_win::moveButtons(int speed,int flag)
 */
 void more_win::weatherClicked()
 {
+    winstatus();
     QSoundEffect *clicksound = new QSoundEffect(this);
     clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
     clicksound->setVolume(0.5);
@@ -118,6 +122,7 @@ void more_win::weatherClicked()
 
 void more_win::notepadClicked()
 {
+    winstatus();
     QSoundEffect *clicksound = new QSoundEffect(this);
     clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
     clicksound->setVolume(0.5);
@@ -134,6 +139,7 @@ void more_win::notepadClicked()
 
 void more_win::clockClicked()
 {
+    winstatus();
     QSoundEffect *clicksound = new QSoundEffect(this);
     clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
     clicksound->setVolume(0.5);
@@ -142,6 +148,7 @@ void more_win::clockClicked()
 
 void more_win::calendarClicked()
 {
+    winstatus();
     QSoundEffect *clicksound = new QSoundEffect(this);
     clicksound->setSource(QUrl("qrc:/src/images/icon/click.wav"));  // 使用 "qrc:" 前缀指定资源文件路径
     clicksound->setVolume(0.5);
@@ -191,3 +198,4 @@ void more_win::wheelEvent(QWheelEvent *event)
     }
     update();
 }
+
