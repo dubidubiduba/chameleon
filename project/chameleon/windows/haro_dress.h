@@ -36,7 +36,7 @@ private:
     Ui::haro_dress *ui;
     QWidget* m_parent;
 
-    std::vector<QPixmap> body,ears;//各部件对应图片容器
+    std::vector<QPixmap> body,ears1,ears2;//各部件对应图片容器
     QPushButton *bodyBtn[NUM],*earsBtn[NUM];//各部件对应按钮容器
     QButtonGroup *bodyBox,*earsBox;//按钮组
     int bodyNum,earsNum;//身体和耳朵对应装扮序号

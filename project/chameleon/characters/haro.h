@@ -30,6 +30,7 @@ public:
 
     QVBoxLayout* Body;
     QLabel *bodyImage ,*earsImage,*eyesImage,*stripeImage;//各部件对应标签
+    std::vector<QPixmap> movement,Ears;//表情图片容器
 
     static int m_index;  //
 
@@ -42,7 +43,6 @@ private:
 
     std::vector<QPixmap> body,ears1,ears2;//各部件对应图片容器
 
-    std::vector<QPixmap> movement,Ears;//表情图片容器
 
     std::vector<QPixmap> spMovement;//特殊动作图片容器
 

@@ -55,14 +55,23 @@ void haro_dress::imageLoad()
     body.push_back(QPixmap(QString(":/src/images/haro-images/appearance/body/drill_body.png")));
     body.push_back(QPixmap(QString(":/src/images/haro-images/appearance/body/angel_body.png")));
 
-    ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/def_ears1.png")));
-    ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/blue_ears1.png")));
-    ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/pink_ears1.png")));
-    ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/icefire_ears1.png")));
-    ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/cat_ears1.png")));
-    ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/Gundam_ears1.png")));
-    ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/drill_ears1.png")));
-    ears.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/angel_ears1.png")));
+    ears1.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/def_ears1.png")));
+    ears1.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/blue_ears1.png")));
+    ears1.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/pink_ears1.png")));
+    ears1.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/icefire_ears1.png")));
+    ears1.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/cat_ears1.png")));
+    ears1.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/Gundam_ears1.png")));
+    ears1.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/drill_ears1.png")));
+    ears1.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/angel_ears1.png")));
+
+    ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/def_ears2.png")));
+    ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/blue_ears2.png")));
+    ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/pink_ears2.png")));
+    ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/icefire_ears2.png")));
+    ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/cat_ears2.png")));
+    ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/Gundam_ears2.png")));
+    ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/drill_ears2.png")));
+    ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/angel_ears2.png")));
 }
 
 void haro_dress::wheelEvent(QWheelEvent *event)
@@ -95,7 +104,7 @@ void haro_dress::paintEvent(QPaintEvent *)
         painter.drawPixmap(0,y+i*120,120,120,body[i]);
     for(int i = 0;i<num;i++){
         painter.drawPixmap(130,y+i*120,120,120,dummy);
-        painter.drawPixmap(130,y+i*120,120,120,ears[i]);
+        painter.drawPixmap(130,y+i*120,120,120,ears1[i]);
     }
 }
 
@@ -168,5 +177,7 @@ void haro_dress::earsChange()
     else if(earsBtn[6]->isChecked()) idx = 6;
     else if(earsBtn[7]->isChecked()) idx = 7;
 
-    CML->_haro->Imageset(CML->_haro->earsImage,ears[idx]);
+    CML->_haro->Imageset(CML->_haro->earsImage,ears1[idx]);
+    CML->_haro->Ears[0] = ears1[idx];
+    CML->_haro->Ears[1] = ears2[idx];
 }
