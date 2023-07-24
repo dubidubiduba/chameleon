@@ -22,8 +22,8 @@ SOURCES += \
     windows/haro_dress.cpp \
     windows/listwidget.cpp \
     windows/more_win.cpp \
-    windows/mycalendar.cpp \
-    windows/note_win.cpp \
+windows/mycalendar.cpp \
+ windows/notewindow.cpp \
     windows/schedule.cpp \
     windows/scheduledialog.cpp \
     windows/schedulemanager.cpp \
@@ -42,8 +42,8 @@ HEADERS += \
     windows/haro_dress.h \
     windows/listwidget.h \
     windows/more_win.h \
-    windows/mycalendar.h \
-    windows/note_win.h \
+windows/notewindow.h \
+windows/mycalendar.h \
     windows/schedule.h \
     windows/scheduledialog.h \
     windows/schedulemanager.h \
@@ -57,7 +57,7 @@ FORMS += \
     windows/filesdialog.ui \
     windows/haro_dress.ui \
     windows/more_win.ui \
-    windows/note_win.ui \
+    windows/notewindow.ui \
     windows/scheduledialog.ui \
     windows/set_win.ui
 

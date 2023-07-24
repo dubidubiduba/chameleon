@@ -6,12 +6,12 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QWheelEvent>
+#include "noteWindow.h"
 #include <QMouseEvent>
 #include "calendar_win.h"
 #include<QPixmap>
 #include <QFileDialog>
 #include<QSoundEffect>
-#include "note_win.h"
 namespace Ui {
 class more_win;
 }
@@ -38,8 +38,8 @@ public:
     void wheelEvent(QWheelEvent *event);
     void moveButtons(int speed,int flag);
 public:
-    calendar_win *Calendar;
-    note_win* notepad;
+noteWindow* notepad;
+calendar_win *Calendar;
     int winSwitch=0;
 
 private:
@@ -57,7 +57,7 @@ private:
     QPushButton* btn_communion;
     QPushButton* btn_screensh;
     double btnSize ;
-    //éŸ³æ•ˆ
+    //ÒôÐ§
     QSoundEffect *clicksound;
 };
 

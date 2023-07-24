@@ -1,7 +1,7 @@
 #include "more_win.h"
 #include "ui_more_win.h"
 #include<QScreen>
-#include "note_win.h"
+
 
 more_win::more_win(QWidget *parent,QWidget* p) :
     QWidget(parent),
@@ -12,9 +12,8 @@ more_win::more_win(QWidget *parent,QWidget* p) :
     initWindow();
     initBtn();
     initConnect();
-
-    Calendar=new calendar_win(nullptr);
-    notepad = new note_win(nullptr, this);
+notepad = new noteWindow(this);
+Calendar=new calendar_win(nullptr);
 
 }
 
