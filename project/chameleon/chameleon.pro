@@ -1,4 +1,5 @@
 QT       += core gui multimedia
+QT       += core gui xml
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -17,9 +18,15 @@ SOURCES += \
     chameleon.cpp \
     windows/calendar_win.cpp \
     windows/dress_win.cpp \
+    windows/filesdialog.cpp \
     windows/haro_dress.cpp \
+    windows/listwidget.cpp \
     windows/more_win.cpp \
+    windows/mycalendar.cpp \
     windows/note_win.cpp \
+    windows/schedule.cpp \
+    windows/scheduledialog.cpp \
+    windows/schedulemanager.cpp \
     windows/set_win.cpp
 
 HEADERS += \
@@ -31,18 +38,27 @@ HEADERS += \
     characters/rinai.h \
     windows/calendar_win.h \
     windows/dress_win.h \
+    windows/filesdialog.h \
     windows/haro_dress.h \
+    windows/listwidget.h \
     windows/more_win.h \
+    windows/mycalendar.h \
     windows/note_win.h \
-    windows/set_win.h
+    windows/schedule.h \
+    windows/scheduledialog.h \
+    windows/schedulemanager.h \
+    windows/set_win.h \
+    windows/utility.h
 
 FORMS += \
     chameleon.ui \
     windows/calendar_win.ui \
     windows/dress_win.ui \
+    windows/filesdialog.ui \
     windows/haro_dress.ui \
     windows/more_win.ui \
     windows/note_win.ui \
+    windows/scheduledialog.ui \
     windows/set_win.ui
 
 # Default rules for deployment.
