@@ -37,15 +37,21 @@ void haro::initBody()
     Imageset(earsImage,ears1[1]);
     Imageset(eyesImage,eyes);
     Imageset(stripeImage,stripe);
+
+    bodyImage->setMinimumSize(bodyImage->width()-5, bodyImage->height()); // 设置窗口的最小尺寸
 }
+
 void haro::Imageset(QLabel* image,QPixmap pixmap)  //用来给label设置图片,主要用于整个pet的加载
 {
     int size = m_parent->frameGeometry().width();
     image->setPixmap(pixmap);
     image->setPixmap(pixmap.scaled(size,size));//使用scaled修改图片大小，能避免图片因缩放模糊
     image->setScaledContents(true);  //使图片完全填充
-    image->resize(size,size);
+    //image->resize(size,size);
 }
+
+
+
 
 void haro::imageLoad()
 {
@@ -78,7 +84,9 @@ void haro::imageLoad()
     ears2.push_back(QPixmap(QString(":/src/images/haro-images/appearance/ears/angel_ears2.png")));
 
     eyes.load(":/src/images/haro-images/appearance/eyes/def_eyes.png");
-    stripe.load(":/src/images/haro-images/appearance/stripe.png");}
+    stripe.load(":/src/images/haro-images/appearance/stripe.png");
+
+}
 void haro::eyesMovementLoad()  //将每一帧的图片存入QPixmap数组
 {
     faceNum.push_back(9);//帧数-例：9代表9帧

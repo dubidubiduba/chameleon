@@ -6,6 +6,7 @@
 #include <QtGui/QPainter>
 #include <QPushButton>
 #include <QButtonGroup>
+#include "windows/haro_dress.h"
 namespace Ui {
 class dress_win;
 }
@@ -24,12 +25,13 @@ public:
     void setImage(QLabel* label,QPixmap pixmap);
     void chooseCharacter();
 
-
+    haro_dress *Dress;
 
 private:
     Ui::dress_win *ui;
 
     QWidget *m_parent;
+
 
     int win_width = 300;
     int win_height = 400;

@@ -34,8 +34,6 @@ public:
     static int m_index;  //
 
 private:
-
-
     QWidget* m_parent;
 
     QVBoxLayout* ears_part;

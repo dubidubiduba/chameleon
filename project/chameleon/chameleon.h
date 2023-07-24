@@ -66,8 +66,8 @@ protected://重载三个鼠标事件的函数
 
 private:
     Ui::chameleon *ui;
-    int win_width=434;    //主窗口的宽
-    int win_height=387;   //主窗口的高
+    int win_width=380;    //主窗口的宽  434
+    int win_height=380;   //主窗口的高  387
     int ScreenWidth;  //显示器屏幕的宽度
     int ScreenHeight;   //显示器屏幕的高度
 

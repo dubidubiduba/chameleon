@@ -8,6 +8,7 @@ dress_win::dress_win(QWidget *parent,QWidget* p) :
 {
     ui->setupUi(this);
     m_parent = p;
+    Dress = new haro_dress(nullptr,this,p);
     initWindow();
     initImages();
 }
@@ -99,10 +100,13 @@ void dress_win::chooseCharacter()
 {
     chameleon* CML = qobject_cast<chameleon*>(m_parent);
     CML->clearCharacters();
+    if(!btn_haro->isChecked()) Dress->hide();
     if(btn_haro->isChecked())
     {
         CML->body_part->addWidget(CML->_haro->bodyImage);
         CML->_haro->bodyImage->show();
+        Dress->setGeometry(x()-Dress->win_width-10,y()+height()/2-Dress->win_height/2,Dress->win_width,Dress->win_height);
+        Dress->show();
     }
     else if(btn_rinai->isChecked())
     {

@@ -287,6 +287,7 @@ void chameleon::winstatus()
     Dress->setVisible(winSwitch);
     Set->setVisible(winSwitch);
     More->setVisible(winSwitch);
+    Dress->Dress->setVisible(winSwitch);
 }
 
 void chameleon::mousePressEvent(QMouseEvent *event)//鼠标按压时触发该事件，仅触发一次
@@ -322,6 +323,7 @@ void chameleon::mouseMoveEvent(QMouseEvent *event)//在鼠标移动时会被多�
         Set->move(x()-Set->width()-100  ,  y()+height()/2-Set->height()/2);
         More->move(x() - More->width()  ,  y()+height()/2-More->height()/2);
         Dress->move(x()-Dress->width()  ,  y()+height()/2-Dress->height()/2);
+        Dress->Dress->move(Dress->x()-Dress->Dress->win_width-10 , Dress->y()+Dress->height()/2-Dress->Dress->win_height/2);
     }
 }
 
