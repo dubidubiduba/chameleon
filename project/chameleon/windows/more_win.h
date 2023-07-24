@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QWheelEvent>
+#include <QMouseEvent>
 #include "calendar_win.h"
 #include<QPixmap>
 #include <QFileDialog>
@@ -26,6 +27,7 @@ public:
     void initWindow();
     void initConnect();
     void setButtonsGeo(QPushButton* button);
+    void winstatus();
 //
     void weatherClicked();
     void notepadClicked();
@@ -37,9 +39,8 @@ public:
     void moveButtons(int speed,int flag);
 public:
     calendar_win *Calendar;
-
-
     note_win* notepad;
+    int winSwitch=0;
 
 private:
     Ui::more_win *ui;
