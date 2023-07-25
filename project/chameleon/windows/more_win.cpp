@@ -1,6 +1,5 @@
 #include "more_win.h"
 #include "ui_more_win.h"
-#include "note_win.h"
 
 more_win::more_win(QWidget *parent,QWidget* p) :
     QWidget(parent),
