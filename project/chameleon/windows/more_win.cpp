@@ -1,7 +1,11 @@
 #include "more_win.h"
 #include "ui_more_win.h"
+
+
 #include<QScreen>
 #include"tomatoclock.h"
+
+
 
 more_win::more_win(QWidget *parent,QWidget* p) :
     QWidget(parent),
