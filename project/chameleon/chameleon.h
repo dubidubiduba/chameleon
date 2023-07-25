@@ -1,6 +1,9 @@
 #ifndef CHAMELEON_H
 #define CHAMELEON_H
 
+#include <QApplication>
+#include <QSystemTrayIcon>
+#include <QMenu>
 #include <QWidget>
 #include <QScreen>
 #include <QLabel>
@@ -36,6 +39,9 @@ class chameleon : public QWidget
 public:
     chameleon(QWidget *parent = nullptr);
     ~chameleon();
+    QSystemTrayIcon *pSystemTray;
+    QMenu *menu;
+    void initSystemTray();
     void initWindow();
     void initButton();
     void Imageset(QLabel* image,QPixmap pixmap);

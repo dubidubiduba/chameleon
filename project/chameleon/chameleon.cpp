@@ -49,6 +49,20 @@ chameleon::~chameleon()
 }
 
 /*--------------------------------------初始化部分--------------------------------------------*/
+void chameleon::initSystemTray()
+{
+
+    pSystemTray = new QSystemTrayIcon(this);
+    pSystemTray->setIcon(QIcon(":/src/images/icon/chameleon.png"));
+    pSystemTray->setToolTip("chameleon");
+
+    menu = new QMenu(this);
+    QAction *exitAction = menu->addAction("退出");
+    QObject::connect(exitAction, &QAction::triggered, this, &QCoreApplication::quit);
+
+    pSystemTray->setContextMenu(menu);
+    pSystemTray->show();
+}
 void chameleon::initWindow()//初始化主窗口
 {
     More = new more_win(nullptr,this);
