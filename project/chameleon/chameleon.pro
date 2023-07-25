@@ -27,7 +27,8 @@ SOURCES += \
     windows/schedule.cpp \
     windows/scheduledialog.cpp \
     windows/schedulemanager.cpp \
-    windows/set_win.cpp
+    windows/set_win.cpp \
+    windows/tomatoclock.cpp
 
 HEADERS += \
     chameleon.h \
@@ -48,6 +49,7 @@ windows/notewindow.h \
     windows/scheduledialog.h \
     windows/schedulemanager.h \
     windows/set_win.h \
+    windows/tomatoclock.h \
     windows/utility.h
 
 FORMS += \
@@ -59,7 +61,8 @@ FORMS += \
     windows/more_win.ui \
     windows/notewindow.ui \
     windows/scheduledialog.ui \
-    windows/set_win.ui
+    windows/set_win.ui \
+    windows/tomatoclock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

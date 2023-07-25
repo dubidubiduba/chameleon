@@ -12,6 +12,7 @@
 #include<QPixmap>
 #include <QFileDialog>
 #include<QSoundEffect>
+#include"tomatoclock.h"
 namespace Ui {
 class more_win;
 }
@@ -40,6 +41,7 @@ public:
 public:
 noteWindow* notepad;
 calendar_win *Calendar;
+TomatoClock* Clock;
     int winSwitch=0;
 
 private:
