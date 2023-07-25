@@ -288,8 +288,7 @@ void noteWindow::slotUndo(){
 bool noteWindow::canBeSaveOrNot(){
     //判断文件是否被修改
     if(textEdit->document()->isModified()){
-        QMessageBox::StandardButtons result = QMessageBox::warning(this,"Waring","你想将更改保存吗?",
-                    QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        QMessageBox::StandardButtons result;
         //取消
         if(QMessageBox::Cancel == result){
             return false;

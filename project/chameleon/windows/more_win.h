@@ -7,6 +7,12 @@
 #include <QButtonGroup>
 #include <QWheelEvent>
 #include "noteWindow.h"
+#include <QMouseEvent>
+#include "calendar_win.h"
+#include<QPixmap>
+#include <QFileDialog>
+#include<QSoundEffect>
+#include"tomatoclock.h"
 namespace Ui {
 class more_win;
 }
@@ -22,16 +28,21 @@ public:
     void initWindow();
     void initConnect();
     void setButtonsGeo(QPushButton* button);
+    void winstatus();
 //
     void weatherClicked();
     void notepadClicked();
     void clockClicked();
     void calendarClicked();
+    void screenshotClicked();
 
     void wheelEvent(QWheelEvent *event);
     void moveButtons(int speed,int flag);
 public:
-    noteWindow* notepad;
+noteWindow* notepad;
+calendar_win *Calendar;
+TomatoClock* Clock;
+    int winSwitch=0;
 
 private:
     Ui::more_win *ui;
@@ -44,11 +55,12 @@ private:
     QPushButton* btn_note;
     QPushButton* btn_translation;
     QPushButton* btn_music;
-    QPushButton* btn_screen;
     QPushButton* btn_skip;
     QPushButton* btn_communion;
-
+    QPushButton* btn_screensh;
     double btnSize ;
+    //“Ù–ß
+    QSoundEffect *clicksound;
 };
 
 #endif // MORE_WIN_H
