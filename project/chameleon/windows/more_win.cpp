@@ -29,8 +29,13 @@ more_win::~more_win()
     delete notepad;
     delete Clock;
 }
-/*这个窗口包括一些扩展功能的按钮，你可能需要自己去找一些图标
-  可能需要注意：窗口大小发生变化时这个窗口不要遮住角色了，在设置这个窗口的位置时可能需要与一个父类窗口产生关联。
+/*
+在这里添加扩展功能的方式：
+    添加对应按钮，并在initconnect()中写好槽函数，参考其他按钮的槽函数，在initButton()中初始化按钮
+    在moveButtons(int speed,int flag)中写好滚轮移动的操作，参考其他按钮
+    如果需要窗口，请先在.h文件中声明窗口指针
+    
+  以上步骤都完成后，你还需要在chameleon.cpp中的析构函数、winstatus()、mouseMoveEvent(QMouseEvent *event)处完成对应的操作
 */
 void more_win::initWindow()
 {
