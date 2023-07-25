@@ -24,7 +24,7 @@ noteWindow::noteWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    this->setWindowTitle("*新建文本文档.txt - 记事本");
+    this->setWindowTitle("记事本");
 
 //菜单栏
     QMenuBar *mBar=this->menuBar();
