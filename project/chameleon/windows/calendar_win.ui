@@ -14,39 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="MyCalendar" name="calendar">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>320</width>
-      <height>286</height>
-     </rect>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="acceptDrops">
-     <bool>true</bool>
-    </property>
-    <property name="minimumDate">
-     <date>
-      <year>2000</year>
-      <month>1</month>
-      <day>1</day>
-     </date>
-    </property>
-    <property name="maximumDate">
-     <date>
-      <year>2017</year>
-      <month>12</month>
-      <day>31</day>
-     </date>
-    </property>
-    <property name="gridVisible">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QFrame" name="Frame">
     <property name="geometry">
      <rect>
@@ -212,6 +179,16 @@
     </property>
     <property name="mouseTracking">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="MyCalendar" name="calendar">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>311</width>
+      <height>281</height>
+     </rect>
     </property>
    </widget>
   </widget>
