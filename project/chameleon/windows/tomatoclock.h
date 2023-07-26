@@ -31,6 +31,7 @@ private:
     float Opacity; //透明度控制
     int state; //用于暂停和恢复暂停
     int tomato_num; //番茄钟计数
+    int count;//点击次数
     QString current_color;
     QPoint clickPos;
     Ui::TomatoClock *ui;

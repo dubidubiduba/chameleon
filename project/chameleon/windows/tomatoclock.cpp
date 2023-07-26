@@ -9,6 +9,7 @@ TomatoClock::TomatoClock(QWidget *parent, QWidget* p)
     Opacity = 0.8; // 透明度设置
     state = 1;   // 暂停，恢复暂停
     tomato_num = 0; //番茄钟计数
+    count=0;
     current_color = "background:#CD9B9B"; //当前背景色设置
     this->setStyleSheet(current_color);                 //设置背景颜色
     this->setWindowFlags(Qt::FramelessWindowHint);      //设置为无边框窗口
@@ -29,7 +30,7 @@ TomatoClock::TomatoClock(QWidget *parent, QWidget* p)
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
     //当点击(clicked)pbStart时，调用函数pbStart_clicked
     //connect(ui->pbStart, SIGNAL(clicked()), this, SLOT(pbStart_clicked()));
-    timer->start();  //启用定时器
+    //timer->start();  //启用定时器
 
 
 }
@@ -42,24 +43,42 @@ TomatoClock::~TomatoClock()
 
 void TomatoClock::mousePressEvent(QMouseEvent *e)  //鼠标单击事件
 {
-    if(e->button()==Qt::LeftButton)
-        clickPos=e->pos();
+    if(e->button()==Qt::LeftButton){
 
-    this->setWindowOpacity(Opacity);
-    if (state == 1){
-        //暂停
-        state = 0;
-        this->setStyleSheet("background:#B5B5B5");    //设置暂停背景颜色
-        Opacity = 0.2;
-        timer->stop();
-        this->setWindowOpacity(Opacity);                    //设置不透明度
-    }else{//恢复
-        state = 1;
-        timer->start();
-        this->setStyleSheet( current_color);          //恢复背景颜色
-        Opacity = 0.8;
+        clickPos=e->pos();
+        count++;
+        if(count==1){
+            timer->start();
+        }
+        else{
+            this->setWindowOpacity(Opacity);
+            if (state == 1){
+                //暂停
+                state = 0;
+                this->setStyleSheet("background:#B5B5B5");    //设置暂停背景颜色
+                Opacity = 0.2;
+                timer->stop();
+                this->setWindowOpacity(Opacity);                    //设置不透明度
+            }else{//恢复
+                state = 1;
+                timer->start();
+                this->setStyleSheet( current_color);          //恢复背景颜色
+                Opacity = 0.8;
+            }
+            this->setWindowOpacity(Opacity);                    //设置不透明度
+        }
+
+
     }
-    this->setWindowOpacity(Opacity);                    //设置不透明度
+    if(e->button()==Qt::RightButton){
+    initTime();
+    timer->stop();
+    count=0;
+    this->setStyleSheet( current_color);          //恢复背景颜色
+    state=1;
+    Opacity = 0.8;
+    this->setWindowOpacity(Opacity);
+    }
 }
 void TomatoClock::mouseMoveEvent(QMouseEvent *e)  //鼠标移动事件
 {
