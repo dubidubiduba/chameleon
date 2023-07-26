@@ -61,5 +61,5 @@ chameleon是一款桌面宠物插件，中文名译为”变色龙“，灵感�
 后续补充
 
 ## 开发进度
-见statement文件
+见doc分支下statement文件
 
