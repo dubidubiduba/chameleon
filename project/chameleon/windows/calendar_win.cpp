@@ -8,6 +8,7 @@ calendar_win::calendar_win(QWidget *parent) :
     ui(new Ui::calendar_win)
 {
     ui->setupUi(this);
+
     calColor.append(QColor(255,255,255,0));
     calColor.append(QColor(255,0,0,120));
     calColor.append(QColor(255,255,120));
@@ -262,8 +263,8 @@ void calendar_win::on_actionLock_triggered()
         setWindowOpacity(0.6);
         //        setAttribute(Qt::WA_TranslucentBackground);
         setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-        SetWindowLong((HWND)winId(), GWL_EXSTYLE, GetWindowLong((HWND)winId(),
-                                                                 GWL_EXSTYLE) | WS_EX_TRANSPARENT | WS_EX_LAYERED);
+//       SetWindowLong((HWND)winId(), GWL_EXSTYLE, GetWindowLong((HWND)winId(),
+//                                                                 GWL_EXSTYLE) | WS_EX_TRANSPARENT | WS_EX_LAYERED);
         show();
 
     }
