@@ -52,10 +52,8 @@ chameleon是一款桌面宠物插件，中文名译为”变色龙“，灵感�
 |工具|版本|备注|
 |----|----|----|
 |Windows|10|操作系统|
-|JDK|1.8|https://www.injdk.cn/|
 |MySQL|5.7|https://www.mysql.com/cn/|
-|Tomcat|8.5||
-|NodeJS|12.16.3|https://nodejs.org/zh-cn/|
+|MinGw|64位|编译工具集
 
 ### 安装教程
 + 下载安装包
