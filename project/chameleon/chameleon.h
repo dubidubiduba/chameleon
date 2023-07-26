@@ -99,7 +99,7 @@ private:
 
 //鼠标拖动部分
     QPoint startPos;//记录起始坐标
-    bool isMousePressed;//判断是否点击
+    bool isMousePressed=false;//判断是否点击
 
 };
 #endif // CHAMELEON_H
