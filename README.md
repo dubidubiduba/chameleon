@@ -10,32 +10,6 @@ chameleon是一款桌面宠物插件，中文名译为”变色龙“，灵感�
   - images --资源素材等文件
   - windows--主窗体与各个子窗体源码
   - file --由程序引发的文件临时存储位置
-
-
-## 软件架构
-### 后端技术
-
-|技术|说明|版本|备注|
-|----|----|----|----|
-|Spring|容器|5.2.6|https://spring.io/|
-|SpringWebMVC|mvc框架|5.2.6|https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html|
-|Mybatis|ORM框架|3.???|http://www.mybatis.org/mybatis-3/zh/index.html|
-|MyBatisGenerator|数据层代码生成|???|http://www.mybatis.org/generator/index.html|
-|PageHelper|MyBatis物理分页插件|???|http://git.oschina.net/free/Mybatis_PageHelper|
-|Druid|数据库连接池|???|https://github.com/alibaba/druid|
-|Lombok|简化对象封装工具|???|https://github.com/rzwitserloot/lombok|
-
-### 前端技术
-
-|技术|说明|版本|备注|
-|----|----|----|----|
-|Vue|前端框架|???|https://vuejs.org/|
-|Vue-router|路由框架|???|https://router.vuejs.org/|
-|Vuex|全局状态管理框架|???|https://vuex.vuejs.org/|
-|Axios|前端HTTP框架|???|https://github.com/axios/axios|
-|Bootstrap|前端UI框架|4|https://bootstrap-vue.org/|
-|Element|前端UI框架|???|https://element.eleme.io|
-
 ## 环境搭建
 ### 开发工具
 
