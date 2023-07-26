@@ -64,6 +64,8 @@ FORMS += \
     windows/set_win.ui \
     windows/tomatoclock.ui
 
+RC_ICONS = chameleon.ico
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
