@@ -58,7 +58,23 @@ chameleon是一款桌面宠物插件，中文名译为”变色龙“，灵感�
 |NodeJS|12.16.3|https://nodejs.org/zh-cn/|
 
 ### 安装教程
-后续补充
++ 下载安装包
+
++ 进行安装
+
+  ![安装](./documents/docimage/%E5%AE%89%E8%A3%85.jpg)
+
++ 进入安装目录，点击.exe文件进行运行
+
+  ![软件运行](./documents/docimage/%E8%BD%AF%E4%BB%B6%E8%BF%90%E8%A1%8C.jpg)
+
++ 主界面预览
+
+  ![角色示例1](./documents/docimage/%E8%A7%92%E8%89%B2%E7%A4%BA%E4%BE%8B1.jpg)
+
+  ![角色示例2](./documents/docimage/%E8%A7%92%E8%89%B2%E7%A4%BA%E4%BE%8B2.jpg)
+
+  ![角色示例3](./documents/docimage/%E8%A7%92%E8%89%B2%E7%A4%BA%E4%BE%8B3.jpg)
 
 ## 开发进度
 见doc分支下statement文件
