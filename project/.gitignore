@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 *.pro.user
+=======
+*.pro.user
+>>>>>>> b4ca87e45aac13ac4c01e42024f437c1799871af
 *build-*
